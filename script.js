@@ -1,5 +1,5 @@
 // Replace with your actual LINE friend URL via GitHub secret injection if desired
-const LINE_URL = 'YOUR_LINE_FRIEND_URL';
+const LINE_URL = 'https://linevoom.line.me/user/_dWVMyXfALivo-2CCtx-NyELYxWKOfIbA3XtMcmo';
 
 async function loadInstagram() {
   try {
