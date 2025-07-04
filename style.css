@@ -12,7 +12,7 @@ body {
 .container {
   width: min(90%, 1100px);
   margin-inline: auto;
-  padding-block: 4rem;
+  padding-block: 6rem;
 }
 
 /* Hero */
@@ -21,7 +21,7 @@ body {
   background: url('https://images.unsplash.com/photo-1587019151021-01d9df246049?auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
   color: #fff;
   text-align: center;
-  padding: 6rem 1rem;
+  padding: 10rem 1rem;
 }
 .hero::before {
   content: '';
@@ -71,6 +71,12 @@ body {
 }
 
 /* Services */
+.services,
+.gallery,
+.line-cta {
+  padding-bottom: 6rem;
+}
+
 .services h2,
 .gallery h2,
 .line-cta h2 {
