@@ -135,6 +135,41 @@ body {
   opacity: 1;
 }
 
+/* Menu */
+.menu-category {
+  margin-bottom: 2.5rem;
+}
+.price-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+}
+.price-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+  font-size: 0.95rem;
+}
+.price-list li span:last-child {
+  font-weight: 700;
+}
+
+/* Info */
+.info-list {
+  list-style: none;
+  padding: 0;
+  line-height: 1.8;
+}
+.info-list li {
+  margin-bottom: 0.25rem;
+}
+.map-note {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
 /* LINE CTA */
 .line-cta {
   text-align: center;
