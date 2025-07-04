@@ -1,1 +1,44 @@
-[]
+[
+  {
+    "id": "photo-1515378791036-0648a3ef77b2",
+    "caption": "フェイシャルトリートメント",
+    "media_type": "IMAGE",
+    "media_url": "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=640&q=80",
+    "permalink": "https://unsplash.com/photos/PO07N8H_6Gs"
+  },
+  {
+    "id": "photo-1522336572468-97b06e8ef143",
+    "caption": "リラクゼーションストーンセラピー",
+    "media_type": "IMAGE",
+    "media_url": "https://images.unsplash.com/photo-1522336572468-97b06e8ef143?auto=format&fit=crop&w=640&q=80",
+    "permalink": "https://unsplash.com/photos/mP7aPSUm7aE"
+  },
+  {
+    "id": "photo-1540555700478-4be289fbecef",
+    "caption": "アロマキャンドルで癒しの空間",
+    "media_type": "IMAGE",
+    "media_url": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=640&q=80",
+    "permalink": "https://unsplash.com/photos/csK5XPO87lI"
+  },
+  {
+    "id": "photo-1504196606672-aef5c9cefc92",
+    "caption": "ボディマッサージ施術中",
+    "media_type": "IMAGE",
+    "media_url": "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?auto=format&fit=crop&w=640&q=80",
+    "permalink": "https://unsplash.com/photos/7WBBMgZxzuA"
+  },
+  {
+    "id": "photo-1599058917765-9766bd9ac2db",
+    "caption": "花びら入りフットバス",
+    "media_type": "IMAGE",
+    "media_url": "https://images.unsplash.com/photo-1599058917765-9766bd9ac2db?auto=format&fit=crop&w=640&q=80",
+    "permalink": "https://unsplash.com/photos/2EJCSULRwC8"
+  },
+  {
+    "id": "photo-1503342217505-b0a15ec3261c",
+    "caption": "アロマオイルとタオルセット",
+    "media_type": "IMAGE",
+    "media_url": "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=640&q=80",
+    "permalink": "https://unsplash.com/photos/Q14J2k8VE3U"
+  }
+]
