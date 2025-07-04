@@ -192,3 +192,25 @@ body {
   background: #333;
   color: #fff;
 }
+.socials {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.5rem;
+}
+.icon-btn.instagram {
+  background: #e1306c;
+}
+.icon-btn.line {
+  background: #06c755;
+}
