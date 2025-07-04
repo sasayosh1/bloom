@@ -1,0 +1,32 @@
+name: Fetch Instagram Posts
+
+on:
+  schedule:
+    - cron: '0 */12 * * *' # 12時間ごと
+  workflow_dispatch:
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Fetch Instagram posts
+        env:
+          IG_TOKEN: ${{ secrets.INSTAGRAM_TOKEN }}
+          IG_USER_ID: ${{ secrets.INSTAGRAM_USER_ID }}
+        run: |
+          set -e
+          API_URL="https://graph.instagram.com/${IG_USER_ID}/media?fields=id,caption,media_type,media_url,permalink,timestamp&access_token=${IG_TOKEN}"
+          curl -s "$API_URL" | jq '.data' > posts.json
+
+      - name: Commit & push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if ! git diff --quiet posts.json; then
+            git add posts.json
+            git commit -m "Update Instagram posts [skip ci]"
+            git push
+          fi
