@@ -252,6 +252,19 @@ body {
   background: #06c755;
 }
 
+/* Hero CTA icon sizes */
+.hero .icon-btn {
+  width: 60px;
+  height: 60px;
+  font-size: 2rem;
+  margin: 0 0.5rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: transform 0.3s;
+}
+.hero .icon-btn:hover {
+  transform: translateY(-4px);
+}
+
 /* Before & After */
 .before-after-grid {
   display: grid;

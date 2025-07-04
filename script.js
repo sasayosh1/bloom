@@ -14,7 +14,7 @@ async function loadInstagram() {
 function renderGallery(posts) {
   const grid = document.getElementById('insta-grid');
   if (!Array.isArray(posts)) return;
-  posts.slice(0, 9).forEach((post) => {
+  posts.slice(0, 18).forEach((post) => {
     const a = document.createElement('a');
     a.href = post.permalink;
     a.target = '_blank';
