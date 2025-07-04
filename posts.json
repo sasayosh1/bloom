@@ -40,5 +40,26 @@
     "media_type": "IMAGE",
     "media_url": "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=640&q=80",
     "permalink": "https://unsplash.com/photos/Q14J2k8VE3U"
+  },
+  {
+    "id": "hero-1587019151021-01d9df246049",
+    "caption": "サロン内観",
+    "media_type": "IMAGE",
+    "media_url": "https://images.unsplash.com/photo-1587019151021-01d9df246049?auto=format&fit=crop&w=640&q=80",
+    "permalink": "https://unsplash.com/photos/4ob1vI0UmPs"
+  },
+  {
+    "id": "photo-1505751172876-fa1923c5c528",
+    "caption": "フェイシャルケア中",
+    "media_type": "IMAGE",
+    "media_url": "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=640&q=80",
+    "permalink": "https://unsplash.com/photos/fvl4b5T92Zc"
+  },
+  {
+    "id": "photo-1529676468697-d2322995d820",
+    "caption": "タオルとアロマ",
+    "media_type": "IMAGE",
+    "media_url": "https://images.unsplash.com/photo-1529676468697-d2322995d820?auto=format&fit=crop&w=640&q=80",
+    "permalink": "https://unsplash.com/photos/pc_lbSSxCZE"
   }
 ]
