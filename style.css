@@ -38,8 +38,8 @@ body {
   font-weight: 700;
   letter-spacing: 1px;
 }
-.catch {
-  font-size: 1.4rem;
+  .catch {
+    font-size: 1.2rem;
   margin-top: 0.8rem;
   margin-bottom: 2.5rem;
 }
@@ -311,7 +311,6 @@ body {
 @media (max-width: 768px) {
   .container {
     padding-block: 3rem;
-  }
   .hero {
     padding: 8rem 1rem;
   }
