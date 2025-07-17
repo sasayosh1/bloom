@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram 投稿管理</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 15px;
+            background: #f5f5f5;
+            -webkit-text-size-adjust: 100%; /* iOS Safari でのテキストサイズ調整を防ぐ */
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px; /* iOSでズームを防ぐため */
+            box-sizing: border-box;
+        }
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        button {
+            background: #e0a0a0;
+            color: white;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            min-height: 44px; /* タッチ操作に最適なサイズ */
+            width: 100%;
+        }
+        button:hover {
+            background: #d09090;
+        }
+        .current-posts {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #eee;
+        }
+        .post-item {
+            background: #f9f9f9;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #e0a0a0;
+        }
+        .post-item img {
+            max-width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 15px;
+            float: left;
+        }
+        .post-content {
+            overflow: hidden;
+        }
+        .post-caption {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+        .instructions {
+            background: #e8f4f8;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            border-left: 4px solid #5bc0de;
+        }
+        .instructions h3 {
+            margin-top: 0;
+            color: #31708f;
+        }
+        .instructions ol {
+            margin-left: 20px;
+        }
+        .instructions li {
+            margin-bottom: 5px;
+        }
+        #jsonOutput {
+            background: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            font-family: monospace;
+            font-size: 12px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        /* モバイル対応 */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .instructions {
+                padding: 15px;
+            }
+            .instructions h3 {
+                font-size: 1.2rem;
+            }
+            .post-item {
+                padding: 10px;
+            }
+            .post-item img {
+                max-width: 60px;
+                height: 60px;
+                margin-right: 10px;
+            }
+            .post-content {
+                font-size: 14px;
+            }
+            button {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+        
+        /* 小さいスマホ画面 */
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+            .post-item {
+                padding: 8px;
+            }
+            .post-item img {
+                max-width: 50px;
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📸 Instagram 投稿管理</h1>
+        
+        <div class="instructions">
+            <h3>使用方法</h3>
+            <ol>
+                <li><strong>📱 スマホの場合:</strong> Instagramアプリで投稿を開き、右上の「・・・」→「保存」→「画像を保存」</li>
+                <li><strong>💻 PCの場合:</strong> Instagramから投稿の画像を右クリックして「画像を保存」</li>
+                <li>保存した画像を <code>assets/instagram/</code> フォルダに置く</li>
+                <li>下記のフォームに投稿情報を入力</li>
+                <li>「投稿を追加」ボタンをタップ/クリック</li>
+                <li>生成されたJSONを <code>posts.json</code> にコピー</li>
+            </ol>
+            <p><strong>💡 スマホでも快適に使えるよう最適化されています！</strong></p>
+        </div>
+
+        <div class="form-group">
+            <label for="imageFile">画像ファイル名 (例: image1.jpg)</label>
+            <input type="text" id="imageFile" placeholder="assets/instagram/image1.jpg">
+        </div>
+
+        <div class="form-group">
+            <label for="caption">キャプション</label>
+            <textarea id="caption" placeholder="投稿のキャプションを入力してください..."></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="permalink">Instagram投稿URL (任意)</label>
+            <input type="text" id="permalink" placeholder="https://www.instagram.com/p/...">
+        </div>
+
+        <button onclick="addPost()">投稿を追加</button>
+        <button onclick="clearForm()">フォームをクリア</button>
+        <button onclick="copyJSON()">JSONをコピー</button>
+        <button onclick="downloadJSON()">JSONをダウンロード</button>
+
+        <div class="current-posts">
+            <h3>現在の投稿一覧</h3>
+            <div id="postsList"></div>
+        </div>
+
+        <div style="margin-top: 30px;">
+            <h3>生成されたJSON</h3>
+            <pre id="jsonOutput"></pre>
+        </div>
+    </div>
+
+    <script>
+        let posts = [];
+
+        // 既存の投稿を読み込み
+        async function loadExistingPosts() {
+            try {
+                const response = await fetch('posts.json');
+                const data = await response.json();
+                posts = data;
+                updateDisplay();
+            } catch (error) {
+                console.log('既存の投稿データが見つかりません。新しく作成します。');
+                // サンプルデータを表示
+                posts = [
+                    {
+                        id: "sample_001",
+                        caption: "サンプル投稿です。実際の投稿に置き換えてください。",
+                        media_type: "IMAGE",
+                        media_url: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=640&q=80",
+                        permalink: "https://www.instagram.com/bloom_estheticsalon",
+                        timestamp: new Date().toISOString(),
+                        likes_count: 0
+                    }
+                ];
+                updateDisplay();
+            }
+        }
+
+        function addPost() {
+            const imageFile = document.getElementById('imageFile').value;
+            const caption = document.getElementById('caption').value;
+            const permalink = document.getElementById('permalink').value || 'https://www.instagram.com/bloom_estheticsalon';
+
+            if (!imageFile || !caption) {
+                alert('画像ファイル名とキャプションは必須です。');
+                return;
+            }
+
+            const newPost = {
+                id: `bloom_post_${Date.now()}`,
+                caption: caption,
+                media_type: "IMAGE",
+                media_url: imageFile,
+                permalink: permalink,
+                timestamp: new Date().toISOString(),
+                likes_count: Math.floor(Math.random() * 100) + 10
+            };
+
+            posts.unshift(newPost); // 最新の投稿を先頭に
+            updateDisplay();
+            clearForm();
+        }
+
+        function clearForm() {
+            document.getElementById('imageFile').value = '';
+            document.getElementById('caption').value = '';
+            document.getElementById('permalink').value = '';
+        }
+
+        function updateDisplay() {
+            // 投稿リストを表示
+            const postsList = document.getElementById('postsList');
+            postsList.innerHTML = '';
+            
+            posts.forEach((post, index) => {
+                const postDiv = document.createElement('div');
+                postDiv.className = 'post-item';
+                postDiv.innerHTML = `
+                    <img src="${post.media_url}" alt="投稿画像" onerror="this.style.display='none'">
+                    <div class="post-content">
+                        <strong>投稿 ${index + 1}</strong>
+                        <button onclick="removePost(${index})" style="float: right; background: #d9534f; font-size: 12px; padding: 5px 10px;">削除</button>
+                        <div class="post-caption">${post.caption}</div>
+                        <small>ID: ${post.id}</small>
+                    </div>
+                `;
+                postsList.appendChild(postDiv);
+            });
+
+            // JSONを表示
+            document.getElementById('jsonOutput').textContent = JSON.stringify(posts, null, 2);
+        }
+
+        function removePost(index) {
+            if (confirm('この投稿を削除しますか？')) {
+                posts.splice(index, 1);
+                updateDisplay();
+            }
+        }
+
+        function copyJSON() {
+            const jsonText = document.getElementById('jsonOutput').textContent;
+            navigator.clipboard.writeText(jsonText).then(() => {
+                alert('JSONがクリップボードにコピーされました！\n\n次の手順:\n1. posts.json ファイルを開く\n2. 現在の内容を全選択（Ctrl+A）\n3. 削除して新しいJSONを貼り付け（Ctrl+V）\n4. ファイルを保存（Ctrl+S）');
+            });
+        }
+
+        function downloadJSON() {
+            const jsonText = document.getElementById('jsonOutput').textContent;
+            const blob = new Blob([jsonText], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'posts.json';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            alert('posts.jsonファイルをダウンロードしました！\n\n次の手順:\n1. ダウンロードした posts.json を確認\n2. 元の posts.json ファイルと置き換え');
+        }
+
+        // ページ読み込み時に既存の投稿を読み込み
+        loadExistingPosts();
+    </script>
+</body>
+</html>
