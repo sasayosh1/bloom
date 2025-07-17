@@ -10,10 +10,32 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   </head>
   <body>
+    <!-- Global Navigation -->
+    <nav class="global-nav">
+      <div class="nav-container">
+        <div class="nav-logo">
+          <a href="#" class="nav-logo-link">
+            <img src="assets/header/bloom-rogo.jpg" alt="Bloom" class="nav-logo-img">
+          </a>
+        </div>
+        <div class="nav-links">
+          <a href="#services" class="nav-link">サービス</a>
+          <a href="#menu" class="nav-link">メニュー・料金</a>
+          <a href="#info" class="nav-link">店舗情報</a>
+          <a href="#instagram" class="nav-link">Instagram</a>
+          <a href="#" id="nav-line-link" class="nav-link nav-line">LINE予約</a>
+        </div>
+        <div class="nav-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+
     <!-- Hero -->
     <header class="hero">
       <div class="brand-wrap">
-        <div class="brand-icon">Bloom</div>
         <h1 class="logo">Bloom Esthetic Salon</h1>
       </div>
       <p class="catch">心身ともに心地良い状態に🫧</p>
@@ -24,55 +46,55 @@
       <h2>サロンギャラリー</h2>
       <div class="gallery-grid">
         <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=400&q=80" alt="メインサロン" class="gallery-img">
+          <img src="assets/datsumou/unaji-bijin.jpg" alt="メインサロン" class="gallery-img">
           <div class="gallery-overlay">
             <h4>メインサロン</h4>
           </div>
         </div>
         <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=400&q=80" alt="フェイシャルルーム" class="gallery-img">
+          <img src="assets/datsumou/unaji-bijin.jpg" alt="フェイシャルルーム" class="gallery-img">
           <div class="gallery-overlay">
             <h4>フェイシャルルーム</h4>
           </div>
         </div>
         <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=400&q=80" alt="リラクゼーションスペース" class="gallery-img">
+          <img src="assets/datsumou/unaji-bijin.jpg" alt="リラクゼーションスペース" class="gallery-img">
           <div class="gallery-overlay">
             <h4>リラクゼーションスペース</h4>
           </div>
         </div>
         <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=400&q=80" alt="トリートメントルーム" class="gallery-img">
+          <img src="assets/datsumou/unaji-bijin.jpg" alt="トリートメントルーム" class="gallery-img">
           <div class="gallery-overlay">
             <h4>トリートメントルーム</h4>
           </div>
         </div>
         <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=400&q=80" alt="パウダールーム" class="gallery-img">
+          <img src="assets/datsumou/unaji-bijin.jpg" alt="パウダールーム" class="gallery-img">
           <div class="gallery-overlay">
             <h4>パウダールーム</h4>
           </div>
         </div>
         <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=400&q=80" alt="待合スペース" class="gallery-img">
+          <img src="assets/datsumou/unaji-bijin.jpg" alt="待合スペース" class="gallery-img">
           <div class="gallery-overlay">
             <h4>待合スペース</h4>
           </div>
         </div>
         <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=400&q=80" alt="脱毛ルーム" class="gallery-img">
+          <img src="assets/datsumou/unaji-bijin.jpg" alt="脱毛ルーム" class="gallery-img">
           <div class="gallery-overlay">
             <h4>脱毛ルーム</h4>
           </div>
         </div>
         <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1549068106-b024baf5062d?auto=format&fit=crop&w=400&q=80" alt="アメニティ" class="gallery-img">
+          <img src="assets/datsumou/unaji-bijin.jpg" alt="アメニティ" class="gallery-img">
           <div class="gallery-overlay">
             <h4>アメニティ・プロダクト</h4>
           </div>
         </div>
         <div class="gallery-item">
-          <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=400&q=80" alt="機器" class="gallery-img">
+          <img src="assets/datsumou/unaji-bijin.jpg" alt="機器" class="gallery-img">
           <div class="gallery-overlay">
             <h4>最新美容機器</h4>
           </div>
@@ -85,17 +107,17 @@
       <h2>サービス</h2>
       <div class="cards">
         <div class="card">
-          <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=400&q=80" alt="フェイシャルトリートメント" class="service-img">
+          <img src="assets/datsumou/unaji-bijin.jpg" alt="フェイシャルトリートメント" class="service-img">
           <h3>フェイシャルトリートメント</h3>
           <p>お肌の状態に合わせたオーダーメイドケアで、透明感のある素肌へ。</p>
         </div>
         <div class="card">
-          <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=400&q=80" alt="脱毛" class="service-img">
+          <img src="assets/datsumou/unaji-bijin.jpg" alt="脱毛" class="service-img">
           <h3>脱毛</h3>
           <p>最新マシンによる痛みの少ない施術で、スベスベ肌を実感。</p>
         </div>
         <div class="card">
-          <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=400&q=80" alt="アロマボディ" class="service-img">
+          <img src="assets/datsumou/unaji-bijin.jpg" alt="アロマボディ" class="service-img">
           <h3>アロマボディ</h3>
           <p>高品質アロマオイルで心身ともにリラックス。</p>
         </div>
@@ -107,7 +129,7 @@
       <h2>メニュー & 料金</h2>
 
       <div class="menu-category">
-        <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=400&q=80" alt="フェイシャルエステ" class="menu-img">
+        <img src="assets/datsumou/unaji-bijin.jpg" alt="フェイシャルエステ" class="menu-img">
         <h3>【肌質改善】フェイシャルエステ</h3>
         <ul class="price-list">
           <li><span>極上クリスタルハーブコース</span><span>¥14,900</span></li>
@@ -118,7 +140,7 @@
       </div>
 
       <div class="menu-category">
-        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=400&q=80" alt="脱毛" class="menu-img">
+        <img src="assets/datsumou/unaji-bijin.jpg" alt="脱毛" class="menu-img">
         <h3>【レディース】脱毛</h3>
         <ul class="price-list">
           <li><span>Sパーツ脱毛単品</span><span>¥3,300</span></li>
@@ -128,7 +150,7 @@
       </div>
 
       <div class="menu-category">
-        <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=400&q=80" alt="アロマボディ" class="menu-img">
+        <img src="assets/datsumou/unaji-bijin.jpg" alt="アロマボディ" class="menu-img">
         <h3>アロマボディ</h3>
         <ul class="price-list">
           <li><span>120分</span><span>¥12,540</span></li>
@@ -149,9 +171,9 @@
         <li>高岡駅より徒歩圏内 / 無料Wi-Fi・個室・駐車場あり</li>
       </ul>
       <div class="info-images">
-        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=400&q=80" alt="店内の雰囲気" class="info-img">
-        <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=400&q=80" alt="施術ルーム" class="info-img">
-        <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=400&q=80" alt="待合スペース" class="info-img">
+        <img src="assets/datsumou/unaji-bijin.jpg" alt="店内の雰囲気" class="info-img">
+        <img src="assets/datsumou/unaji-bijin.jpg" alt="施術ルーム" class="info-img">
+        <img src="assets/datsumou/unaji-bijin.jpg" alt="待合スペース" class="info-img">
       </div>
       <p class="map-note">※ ご来店の際は LINE にてお気軽にお問い合わせください。</p>
     </section>
@@ -162,8 +184,8 @@
       <div class="before-after-grid">
         <div class="compare-card">
           <div class="images">
-            <img src="https://images.unsplash.com/photo-1551892589-865f69869443?auto=format&fit=crop&w=400&q=80" alt="Before facial" />
-            <img src="https://images.unsplash.com/photo-1556229010-aa3e1c2dcae0?auto=format&fit=crop&w=400&q=80" alt="After facial" />
+            <img src="assets/datsumou/unaji-bijin.jpg" alt="Before facial" />
+            <img src="assets/datsumou/unaji-bijin.jpg" alt="After facial" />
           </div>
           <span class="label before-label">Before</span>
           <span class="label after-label">After</span>
@@ -172,57 +194,102 @@
         </div>
         <div class="compare-card">
           <div class="images">
-            <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80" alt="Before hair removal">
-            <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=400&q=80" alt="After hair removal">
+            <img src="assets/datsumou/unaji-bijin.jpg" alt="Before hair removal">
+            <img src="assets/datsumou/unaji-bijin.jpg" alt="After hair removal">
           </div>
           <span class="label before-label">Before</span>
           <span class="label after-label">After</span>
           <i class="fa-solid fa-arrow-right arrow"></i>
-          <img src="https://images.unsplash.com/photo-1519741497674-6110f5ab4b5f?auto=format&fit=crop&w=400&q=80" alt="After" class="before-after-img">
+          <img src="assets/datsumou/unaji-bijin.jpg" alt="After" class="before-after-img">
           <p>脱毛施術による肌の変化</p>
         </div>
         
           
-          <img src="https://images.unsplash.com/photo-1519741497674-6110f5ab4b5f?auto=format&fit=crop&w=400&q=80" alt="After" class="before-after-img">
+          <img src="assets/datsumou/unaji-bijin.jpg" alt="After" class="before-after-img">
           
         </div>
       </div>
     </section>
 
     <!-- Instagram Section -->
-    <section id="instagram" class="instagram container" style="background:#fdf7f9;">
-      <h2>Instagram</h2>
-      <p style="text-align: center; margin-bottom: 2rem; color: #666;">@bloom_estheticsalon</p>
-      <div id="insta-grid" class="insta-grid"></div>
-      <div style="text-align: center; margin-top: 2rem;">
-        <a class="btn instagram" href="https://www.instagram.com/bloom_estheticsalon" target="_blank" rel="noopener">
+    <section id="instagram" class="instagram container" style="background: linear-gradient(135deg, #fdf7f9 0%, #f9f1f7 100%);">
+      <div class="instagram-header">
+        <div class="instagram-icon">
           <i class="fa-brands fa-instagram"></i>
-          Instagram で見る
+        </div>
+        <h2>Instagram</h2>
+        <p class="instagram-handle">@bloom_estheticsalon</p>
+        <p class="instagram-description">日々のサロンの様子や施術事例をお届けしています</p>
+      </div>
+      <div id="insta-grid" class="insta-grid"></div>
+      <div class="instagram-footer">
+        <a class="btn instagram-btn" href="https://www.instagram.com/bloom_estheticsalon" target="_blank" rel="noopener">
+          <i class="fa-brands fa-instagram"></i>
+          <span>Instagram で見る</span>
         </a>
+        <p class="instagram-note">最新の施術事例やサロンの日常をご覧いただけます</p>
       </div>
     </section>
 
     <!-- Links -->
-    <section id="links" class="links container" style="background:#fffaf7;">
-      <h2>リンク集</h2>
+    <section id="links" class="links container" style="background: linear-gradient(135deg, #fffaf7 0%, #fdf5ef 100%);">
+      <div class="links-header">
+        <h2>お気軽にお問い合わせください</h2>
+        <p class="links-description">各種サービスへのアクセスはこちらから</p>
+      </div>
       <div class="links-grid">
-        <a class="link-card instagram" href="https://www.instagram.com/bloom_estheticsalon" target="_blank" rel="noopener">
-          <i class="fa-brands fa-instagram"></i>
-          <span>Instagram</span>
+        <a class="link-card instagram-link" href="https://www.instagram.com/bloom_estheticsalon" target="_blank" rel="noopener">
+          <div class="link-icon">
+            <i class="fa-brands fa-instagram"></i>
+          </div>
+          <div class="link-content">
+            <h3>Instagram</h3>
+            <p>日々の施術事例や<br>サロンの様子をご覧いただけます</p>
+          </div>
         </a>
-        <a class="link-card line-book" id="line-link" href="#">
-          <i class="fa-regular fa-calendar-check"></i>
-          <span>LINE 予約</span>
-        </a>
-        <a class="link-card notebook" href="https://notebooklm.google.com/notebook/1b85925d-d760-4aed-ba0d-3055d35655db" target="_blank" rel="noopener">
-          <i class="fa-solid fa-headphones-simple"></i>
-          <span>Notebook&nbsp;LM</span>
+        <a class="link-card line-link" id="line-link" href="#">
+          <div class="link-icon">
+            <i class="fa-brands fa-line"></i>
+          </div>
+          <div class="link-content">
+            <h3>LINE 予約</h3>
+            <p>お手軽に予約・相談が<br>できます</p>
+          </div>
         </a>
       </div>
     </section>
 
     <footer class="footer">
-      <p>© 2025 Bloom Esthetic Salon</p>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Bloom Esthetic Salon</h3>
+          <p>心身ともに心地良い状態へ導く<br>プライベートエステサロン</p>
+        </div>
+        <div class="footer-section">
+          <h4>営業時間</h4>
+          <p>09:00 - 18:00<br>定休日：不定休</p>
+        </div>
+        <div class="footer-section">
+          <h4>所在地</h4>
+          <p>〒933-0911<br>富山県高岡市あわら町 15-12<br>高岡駅より徒歩圏内</p>
+        </div>
+        <div class="footer-section">
+          <h4>お問い合わせ</h4>
+          <div class="footer-links">
+            <a href="https://www.instagram.com/bloom_estheticsalon" target="_blank" rel="noopener" class="footer-link instagram">
+              <i class="fa-brands fa-instagram"></i>
+              <span>Instagram</span>
+            </a>
+            <a href="#" id="footer-line-link" class="footer-link line">
+              <i class="fa-brands fa-line"></i>
+              <span>LINE予約</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 Bloom Esthetic Salon. All rights reserved.</p>
+      </div>
     </footer>
 
     <script src="script.js"></script>

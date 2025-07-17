@@ -37,8 +37,61 @@ function renderGallery(posts) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('#line-link, #line-link-2').forEach((el) => {
+  // LINE URLの設定
+  document.querySelectorAll('#line-link, #line-link-2, #nav-line-link, #footer-line-link').forEach((el) => {
     el.href = LINE_URL;
   });
+  
+  // Instagram投稿の読み込み
   loadInstagram();
+  
+  // ハンバーガーメニューの実装
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  
+  navToggle.addEventListener('click', () => {
+    navToggle.classList.toggle('active');
+    navLinks.classList.toggle('active');
+  });
+  
+  // メニューリンクをクリックしたときメニューを閉じる
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      navToggle.classList.remove('active');
+      navLinks.classList.remove('active');
+    });
+  });
+  
+  // ロゴクリックでホームに戻る
+  const logoLink = document.querySelector('.nav-logo-link');
+  if (logoLink) {
+    logoLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+      // モバイルメニューが開いていれば閉じる
+      navToggle.classList.remove('active');
+      navLinks.classList.remove('active');
+    });
+  }
+  
+  // スムーススクロール
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const href = this.getAttribute('href');
+      if (href === '#' || this.classList.contains('nav-logo-link')) return;
+      
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) {
+        const offsetTop = target.offsetTop - 80; // ナビゲーション分のオフセット
+        window.scrollTo({
+          top: offsetTop,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
 });
