@@ -340,22 +340,104 @@ body {
   color: #e0a0a0; /* アクセントカラー */
 }
 
-/* Info */
-.info-list {
+/* Info & Access Combined */
+.info-access {
+  padding-bottom: 5rem;
+}
+
+.info-access h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  margin-bottom: 3rem;
+  color: #333;
+}
+
+.store-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+  align-items: start;
+}
+
+.store-info h3 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.info-grid {
+  display: grid;
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.info-item {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+
+.info-label {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.info-value {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.5;
+}
+
+.amenities {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid #e0a0a0;
+}
+
+.amenities h4 {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.amenities-list {
   list-style: none;
   padding: 0;
-  line-height: 2;
-  font-size: 1.05rem;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.8rem;
 }
-.info-list li {
-  margin-bottom: 0.5rem;
+
+.amenities-list li {
+  font-size: 0.9rem;
+  color: #555;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
+
+.salon-gallery {
+  margin-bottom: 2rem;
+}
+
+.salon-gallery h4 {
+  font-size: 1.3rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
 .info-images {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1rem;
-  margin-top: 1.5rem;
-  margin-bottom: 1rem;
 }
 
 .info-img {
@@ -370,10 +452,16 @@ body {
 .info-img:hover {
   transform: scale(1.02);
 }
-.map-note {
-  margin-top: 1.5rem;
+
+.contact-note {
+  text-align: center;
+  margin-top: 2rem;
   font-size: 1rem;
   color: #666;
+  background: #f0f8ff;
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid #4a90e2;
 }
 
 /* LINE CTA */
@@ -390,60 +478,6 @@ body {
 .line-cta p {
   font-size: 1.1rem;
   margin: 1.5rem 0 2.5rem;
-}
-
-/* Map Section */
-.map-section {
-  padding-bottom: 5rem;
-}
-
-.map-section h2 {
-  text-align: center;
-  font-size: 2.2rem;
-  margin-bottom: 3rem;
-  color: #333;
-}
-
-.map-container {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 3rem;
-  align-items: start;
-}
-
-.map-info h3 {
-  font-size: 1.8rem;
-  color: #333;
-  margin-bottom: 1rem;
-  font-weight: 600;
-}
-
-.map-info .address {
-  font-size: 1.1rem;
-  color: #555;
-  margin-bottom: 1rem;
-  line-height: 1.6;
-}
-
-.map-info .access-info {
-  font-size: 1rem;
-  color: #666;
-  margin-bottom: 1.5rem;
-}
-
-.map-features {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.map-features li {
-  font-size: 1rem;
-  color: #555;
-  margin-bottom: 0.8rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
 }
 
 .map-embed {
@@ -970,6 +1004,20 @@ body {
   .info-list {
     font-size: 0.9rem;
   }
+  .store-details {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .info-item {
+    grid-template-columns: 100px 1fr;
+    gap: 0.8rem;
+  }
+  .info-label {
+    font-size: 0.8rem;
+  }
+  .amenities-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
   .info-images {
     grid-template-columns: 1fr;
   }
@@ -979,10 +1027,6 @@ body {
   .before-after-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
-  }
-  .map-container {
-    grid-template-columns: 1fr;
-    gap: 2rem;
   }
   .map-embed iframe {
     height: 250px;
