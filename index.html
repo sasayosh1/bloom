@@ -18,7 +18,6 @@
 
     /* ---------- ヒーロー ---------- */
     header { position: relative; background:url("assets/header/header.jpg") center/cover no-repeat; height: 100vh; color:#fff; }
-    header::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; height: 300px; background: url("assets/header/bloom-rogo.jpg") center/contain no-repeat; opacity: 0.3; z-index: 0; }
     header::after{ content:""; position:absolute; inset:0; background:rgba(0,0,0,.45); }
     .hero-inner{ position:relative; z-index:1; height:100%; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; }
     .hero-inner h1{ font-size:clamp(1.8rem,4vw,3rem); }
@@ -91,6 +90,10 @@
     
     /* ヒーローセクションのpadding-top調整 */
     header { padding-top: 80px; }
+
+    /* ---------- コンテンツ背景ロゴ ---------- */
+    main { position: relative; }
+    main::before { content: ''; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px; height: 300px; background: url("assets/header/bloom-rogo.jpg") center/contain no-repeat; opacity: 0.3; z-index: -1; pointer-events: none; }
 
     /* ---------- フッター ---------- */
     footer { background: #222; color: #eee; padding: 3rem 1rem 2rem; }
