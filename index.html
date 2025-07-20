@@ -1,345 +1,292 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bloom Esthetic Salon</title>
-    <link rel="stylesheet" href="style.css?v=2025011805" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  </head>
-  <body>
-    <!-- Global Navigation -->
-    <nav class="global-nav">
-      <div class="nav-container">
-        <div class="nav-logo">
-          <a href="#" class="nav-logo-link">
-            <img src="assets/header/bloom-rogo.jpg" alt="Bloom" class="nav-logo-img">
-          </a>
-        </div>
-        <div class="nav-links">
-          <a href="#services" class="nav-link">サービス</a>
-          <a href="#menu" class="nav-link">メニュー・料金</a>
-          <a href="#info" class="nav-link">店舗情報・アクセス</a>
-          <a href="#instagram" class="nav-link">Instagram</a>
-          <a href="#" id="nav-line-link" class="nav-link nav-line">LINE予約</a>
-        </div>
-        <div class="nav-toggle">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </div>
-    </nav>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bloom Esthetic Salon | 肌質改善エステ</title>
 
-    <!-- Hero -->
-    <header class="hero">
-      <div class="brand-wrap">
-        <h1 class="logo">Bloom Esthetic Salon</h1>
-      </div>
-      <p class="catch">心身ともに心地良い状態に🫧</p>
-    </header>
+  <!-- ===== ベース CSS ===== -->
+  <style>
+    /* ---------- リセット & 共通 ---------- */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body   { font-family: "Noto Sans JP", sans-serif; line-height: 1.7; color:#333; }
+    img    { max-width: 100%; height: auto; display:block; }
+    a      { color: inherit; text-decoration: none; }
+    h1,h2,h3,h4 { font-weight: 700; line-height: 1.3; }
+    h2     { font-size: 1.75rem; margin-bottom: .75em; text-align: center; }
+    .container { width: min(100% - 2rem, 960px); margin-inline: auto; }
 
-    <!-- Gallery Section -->
-    <section class="gallery container">
-      <h2>サロンギャラリー</h2>
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <img src="assets/access/access001.jpg" alt="メインサロン" class="gallery-img">
-          <div class="gallery-overlay">
-            <h4>メインサロン</h4>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="assets/access/access002.jpg" alt="フェイシャルルーム" class="gallery-img">
-          <div class="gallery-overlay">
-            <h4>フェイシャルルーム</h4>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="assets/access/access003.jpg" alt="リラクゼーションスペース" class="gallery-img">
-          <div class="gallery-overlay">
-            <h4>リラクゼーションスペース</h4>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="assets/access/access004.jpg" alt="トリートメントルーム" class="gallery-img">
-          <div class="gallery-overlay">
-            <h4>トリートメントルーム</h4>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="assets/access/access005.jpg" alt="パウダールーム" class="gallery-img">
-          <div class="gallery-overlay">
-            <h4>パウダールーム</h4>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="assets/access/access006.jpg" alt="待合スペース" class="gallery-img">
-          <div class="gallery-overlay">
-            <h4>待合スペース</h4>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="assets/datsumou/datsumou001.jpg" alt="脱毛ルーム" class="gallery-img">
-          <div class="gallery-overlay">
-            <h4>脱毛ルーム</h4>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="assets/hadashitsukaizen/hadashitsukaizen001.jpg" alt="アメニティ" class="gallery-img">
-          <div class="gallery-overlay">
-            <h4>アメニティ・プロダクト</h4>
-          </div>
-        </div>
-        <div class="gallery-item">
-          <img src="assets/access/access007.jpg" alt="機器" class="gallery-img">
-          <div class="gallery-overlay">
-            <h4>最新美容機器</h4>
-          </div>
-        </div>
-      </div>
-    </section>
+    /* ---------- ヒーロー ---------- */
+    header { position: relative; background:url("hero.jpg") center/cover no-repeat; height: 100vh; color:#fff; }
+    header::after{ content:""; position:absolute; inset:0; background:rgba(0,0,0,.45); }
+    .hero-inner{ position:relative; z-index:1; height:100%; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; }
+    .hero-inner h1{ font-size:clamp(1.8rem,4vw,3rem); }
+    .hero-inner p{ margin:.8rem 0 1.6rem; font-size:1.1rem; }
+    .btn-primary,
+    .btn-secondary{ display:inline-block; padding:.9rem 2.2rem; border-radius:50px; font-weight:700; transition:.3s; }
+    .btn-primary{ background:#ff69b4; color:#fff; }
+    .btn-primary:hover{ background:#ff86c3; }
+    .btn-secondary{ background:#fff; color:#ff69b4; margin-left:.8rem; }
+    .btn-secondary:hover{ background:#f3f3f3; }
 
-    <!-- Services -->
-    <section id="services" class="services container">
-      <h2>サービス</h2>
-      <div class="cards">
-        <div class="card">
-          <img src="assets/hadashitsukaizen/hadashitsukaizen002.jpg" alt="フェイシャルトリートメント" class="service-img">
-          <h3>フェイシャルトリートメント</h3>
-          <p>お肌の状態に合わせたオーダーメイドケアで、透明感のある素肌へ。</p>
-        </div>
-        <div class="card">
-          <img src="assets/datsumou/datsumou002.jpg" alt="脱毛" class="service-img">
-          <h3>脱毛</h3>
-          <p>最新マシンによる痛みの少ない施術で、スベスベ肌を実感。</p>
-        </div>
-        <div class="card">
-          <img src="assets/aroma/aroma001.jpg" alt="アロマボディ" class="service-img">
-          <h3>アロマボディ</h3>
-          <p>高品質アロマオイルで心身ともにリラックス。</p>
-        </div>
-      </div>
-    </section>
+    /* ---------- 選ばれる理由 ---------- */
+    #reasons .cards{ display:grid; gap:1.5rem; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); margin-top:2rem;}
+    #reasons .card{ background:#fff; border-radius:12px; padding:1.5rem; box-shadow:0 4px 12px rgba(0,0,0,.06); text-align:center;}
+    #reasons .card img{ width:64px; margin-inline:auto 1rem;}
 
-    <!-- Menu & Pricing -->
-    <section id="menu" class="menu container" style="background:#fdf7f9;">
-      <h2>メニュー & 料金</h2>
+    /* ---------- 悩み別入口 ---------- */
+    #concerns .concern-grid{ display:grid; gap:1rem; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); }
+    #concerns .concern{ background:#f9f9f9; padding:1rem; border-radius:10px; text-align:center; cursor:pointer; transition:.25s;}
+    #concerns .concern:hover{ background:#ffe2f0; }
 
-      <div class="menu-category">
-        <img src="assets/hadashitsukaizen/hadashitsukaizen003.jpg" alt="フェイシャルエステ" class="menu-img">
-        <h3>【肌質改善】フェイシャルエステ</h3>
-        <ul class="price-list">
-          <li><span>極上クリスタルハーブコース</span><span>¥14,900</span></li>
-          <li><span>毛穴洗浄コース</span><span>¥13,500</span></li>
-          <li><span>再生リペアコース</span><span>¥11,000</span></li>
-          <li><span>肌質改善カウンセリング</span><span>¥0</span></li>
-        </ul>
-      </div>
+    /* ---------- 人気メニュー ---------- */
+    #popular .menu-grid{ display:grid; gap:1.5rem; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); }
+    .menu-card{ border:1px solid #eee; border-radius:10px; overflow:hidden; }
+    .menu-card img{ aspect-ratio:4/3; object-fit:cover; }
+    .menu-card .text{ padding:1rem; }
+    .menu-card .text h3{ font-size:1.25rem; margin-bottom:.5rem; }
+    .price{ color:#ff69b4; font-weight:700; }
 
-      <div class="menu-category">
-        <img src="assets/datsumou/datsumou003.jpg" alt="脱毛" class="menu-img">
-        <h3>【レディース】脱毛</h3>
-        <ul class="price-list">
-          <li><span>Sパーツ脱毛単品</span><span>¥3,300</span></li>
-          <li><span>Lパーツ脱毛単品</span><span>¥6,600</span></li>
-          <li><span>その他セットプラン</span><span>¥1〜</span></li>
-        </ul>
-      </div>
+    /* ---------- Before After ---------- */
+    #cases .case-grid{ display:grid; gap:1rem; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); }
+    .case{ position:relative; }
+    .case::after{ content:"BEFORE / AFTER"; position:absolute; bottom:.5rem; left:50%; transform:translateX(-50%); background:rgba(0,0,0,.55); color:#fff; padding:.15rem .5rem; font-size:.8rem; border-radius:6px; }
 
-      <div class="menu-category">
-        <img src="assets/aroma/aroma002.jpg" alt="アロマボディ" class="menu-img">
-        <h3>アロマボディ</h3>
-        <ul class="price-list">
-          <li><span>120分</span><span>¥12,540</span></li>
-          <li><span>90分</span><span>¥9,900</span></li>
-          <li><span>60分</span><span>¥6,930</span></li>
-          <li><span>45分</span><span>¥5,500</span></li>
-        </ul>
-      </div>
-    </section>
+    /* ---------- お客様の声 ---------- */
+    #voices .voice-slider{ display:flex; overflow-x:auto; gap:1rem; scroll-snap-type:x mandatory; }
+    .voice{ min-width:260px; scroll-snap-align:start; background:#fff; border-radius:10px; padding:1rem; box-shadow:0 4px 12px rgba(0,0,0,.05); }
+    .stars{ color:#ffc107; }
 
-    <!-- Shop Info & Access -->
-    <section id="info" class="info-access container" style="background:#f6fdf9;">
-      <h2>店舗情報・アクセス</h2>
-      
-      <!-- Store Details -->
-      <div class="store-details">
-        <div class="store-info">
-          <h3>Bloom Esthetic Salon</h3>
-          <div class="info-grid">
-            <div class="info-item">
-              <span class="info-label">📍 住所</span>
-              <span class="info-value">〒933-0911<br>富山県高岡市あわら町 15-12</span>
-            </div>
-            <div class="info-item">
-              <span class="info-label">🕒 営業時間</span>
-              <span class="info-value">09:00 – 18:00</span>
-            </div>
-            <div class="info-item">
-              <span class="info-label">📅 定休日</span>
-              <span class="info-value">不定休</span>
-            </div>
-            <div class="info-item">
-              <span class="info-label">🚃 アクセス</span>
-              <span class="info-value">高岡駅より徒歩圏内</span>
-            </div>
-          </div>
-          
-          <div class="amenities">
-            <h4>設備・サービス</h4>
-            <ul class="amenities-list">
-              <li>🚗 駐車場完備</li>
-              <li>📶 無料Wi-Fi</li>
-              <li>🏠 完全個室</li>
-              <li>💆‍♀️ プライベート空間</li>
-            </ul>
-          </div>
-        </div>
-        
-        <div class="map-embed">
-          <iframe 
-            src="https://maps.google.com/maps?q=〒933-0911+富山県高岡市あわら町15-12&t=&z=16&ie=UTF8&iwloc=&output=embed"
-            width="100%" 
-            height="300" 
-            style="border:0;" 
-            allowfullscreen="" 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade"
-            title="Bloom Esthetic Salon 地図">
-          </iframe>
-        </div>
-      </div>
-      
-      <!-- Salon Images -->
-      <div class="salon-gallery">
-        <h4>サロンの雰囲気</h4>
-        <div class="info-images">
-          <img src="assets/datsumou/datsumou004.jpg" alt="店内の雰囲気" class="info-img">
-          <img src="assets/aroma/aroma003.jpg" alt="施術ルーム" class="info-img">
-          <img src="assets/hadashitsukaizen/hadashitsukaizen004.jpg" alt="待合スペース" class="info-img">
-        </div>
-      </div>
-      
-      <p class="contact-note">※ ご来店の際は LINE にてお気軽にお問い合わせください。</p>
-    </section>
+    /* ---------- 初回来店の流れ ---------- */
+    #flow ol{ list-style:none; counter-reset:step; display:grid; gap:1rem; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); }
+    #flow li{ background:#f9f9f9; border-radius:10px; padding:1.5rem; position:relative; }
+    #flow li::before{ counter-increment:step; content:counter(step); position:absolute; top:-12px; left:-12px; width:36px; height:36px; display:flex; justify-content:center; align-items:center; background:#ff69b4; color:#fff; border-radius:50%; font-weight:700;}
 
-    <!-- Before & After -->
-    <section id="before-after" class="before-after container" style="background:#f7f9fd;">
-      <h2>Before & After</h2>
-      <div class="before-after-grid">
-        <div class="compare-card">
-          <div class="images">
-            <img src="assets/datsumou/datsumou005.jpg" alt="Before facial" />
-            <img src="assets/datsumou/datsumou006.jpg" alt="After facial" />
-          </div>
-          <span class="label before-label">Before</span>
-          <span class="label after-label">After</span>
-          <i class="fa-solid fa-arrow-right arrow"></i>
-          <p>フェイシャル施術前後の変化</p>
-        </div>
-        <div class="compare-card">
-          <div class="images">
-            <img src="assets/datsumou/datsumou007.jpg" alt="Before hair removal">
-            <img src="assets/datsumou/datsumou008.jpg" alt="After hair removal">
-          </div>
-          <span class="label before-label">Before</span>
-          <span class="label after-label">After</span>
-          <i class="fa-solid fa-arrow-right arrow"></i>
-          <img src="assets/aroma/aroma004.jpg" alt="After" class="before-after-img">
-          <p>脱毛施術による肌の変化</p>
-        </div>
-        
-          
-          <img src="assets/aroma/aroma004.jpg" alt="After" class="before-after-img">
-          
-        </div>
-      </div>
-    </section>
+    /* ---------- FAQ ---------- */
+    #faq details{ background:#fafafa; margin-bottom:.7rem; border-radius:8px; padding:1rem; }
+    #faq summary{ font-weight:700; cursor:pointer; }
 
-    <!-- Instagram Section -->
-    <section id="instagram" class="instagram container" style="background: linear-gradient(135deg, #fdf7f9 0%, #f9f1f7 100%);">
-      <div class="instagram-header">
-        <div class="instagram-icon">
-          <i class="fa-brands fa-instagram"></i>
-        </div>
-        <h2>Instagram</h2>
-        <p class="instagram-handle">@bloom_estheticsalon</p>
-        <p class="instagram-description">日々のサロンの様子や施術事例をお届けしています</p>
-      </div>
-      <div id="insta-grid" class="insta-grid"></div>
-      <div class="instagram-footer">
-        <a class="btn instagram-btn" href="https://www.instagram.com/bloom_estheticsalon" target="_blank" rel="noopener">
-          <i class="fa-brands fa-instagram"></i>
-          <span>Instagram で見る</span>
-        </a>
-        <p class="instagram-note">最新の施術事例やサロンの日常をご覧いただけます</p>
-      </div>
-    </section>
+    /* ---------- アクセス ---------- */
+    #access .map{ aspect-ratio:16/9; margin-bottom:1rem; }
 
-    <!-- Links -->
-    <section id="links" class="links container" style="background: linear-gradient(135deg, #fffaf7 0%, #fdf5ef 100%);">
-      <div class="links-header">
-        <h2>お気軽にお問い合わせください</h2>
-        <p class="links-description">各種サービスへのアクセスはこちらから</p>
-      </div>
-      <div class="links-grid">
-        <a class="link-card instagram-link" href="https://www.instagram.com/bloom_estheticsalon" target="_blank" rel="noopener">
-          <div class="link-icon">
-            <i class="fa-brands fa-instagram"></i>
-          </div>
-          <div class="link-content">
-            <h3>Instagram</h3>
-            <p>日々の施術事例や<br>サロンの様子をご覧いただけます</p>
-          </div>
-        </a>
-        <a class="link-card line-link" id="line-link" href="#">
-          <div class="link-icon">
-            <i class="fa-brands fa-line"></i>
-          </div>
-          <div class="link-content">
-            <h3>LINE 予約</h3>
-            <p>お手軽に予約・相談が<br>できます</p>
-          </div>
-        </a>
-      </div>
-    </section>
+    /* ---------- フッター ---------- */
+    footer{ background:#222; color:#eee; text-align:center; padding:2rem 1rem; }
+    footer p{ font-size:.9rem; }
 
-    <footer class="footer">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h3>Bloom Esthetic Salon</h3>
-          <p>心身ともに心地良い状態へ導く<br>プライベートエステサロン</p>
-        </div>
-        <div class="footer-section">
-          <h4>営業時間</h4>
-          <p>09:00 - 18:00<br>定休日：不定休</p>
-        </div>
-        <div class="footer-section">
-          <h4>所在地</h4>
-          <p>〒933-0911<br>富山県高岡市あわら町 15-12<br>高岡駅より徒歩圏内</p>
-        </div>
-        <div class="footer-section">
-          <h4>お問い合わせ</h4>
-          <div class="footer-links">
-            <a href="https://www.instagram.com/bloom_estheticsalon" target="_blank" rel="noopener" class="footer-link instagram">
-              <i class="fa-brands fa-instagram"></i>
-              <span>Instagram</span>
-            </a>
-            <a href="#" id="footer-line-link" class="footer-link line">
-              <i class="fa-brands fa-line"></i>
-              <span>LINE予約</span>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>© 2025 Bloom Esthetic Salon. All rights reserved.</p>
-      </div>
-    </footer>
+    /* ---------- 下部固定CTA モバイル ---------- */
+    @media (max-width: 600px) {
+      .fixed-cta{ position:fixed; bottom:0; left:0; width:100%; background:#ff69b4; color:#fff; text-align:center; padding:.8rem; font-weight:700; z-index:1000;}
+      .fixed-cta a{ color:#fff; }
+    }
+  </style>
+</head>
 
-    <script src="script.js"></script>
-  </body>
+<body>
+
+<!-- ========== ヒーロー ========== -->
+<header id="hero">
+  <div class="hero-inner container">
+    <h1>肌質改善 × 完全個室サロン</h1>
+    <p>毛穴・赤み・乾燥…原因を分析し、<br>"隠す"から"育てる肌"へ</p>
+    <a href="#reserve" class="btn-primary">LINEで無料カウンセリング</a>
+    <a href="#popular"  class="btn-secondary">人気メニューを見る</a>
+  </div>
+</header>
+
+<main>
+
+<!-- ========== 選ばれる理由 ========== -->
+<section id="reasons" class="container" style="padding:4rem 0;">
+  <h2>Bloom が選ばれる 4 つの理由</h2>
+  <div class="cards">
+    <div class="card">
+      <img src="icon_analyze.svg" alt="">
+      <h3>肌分析 × オーダー施術</h3>
+      <p>専用スキャナで状態を測定し、当日調合するカスタム処方。</p>
+    </div>
+    <div class="card">
+      <img src="icon_private.svg" alt="">
+      <h3>完全個室と徹底衛生</h3>
+      <p>施術ごとにリネンを総入れ替え。プライベート空間で安心。</p>
+    </div>
+    <div class="card">
+      <img src="icon_follow.svg" alt="">
+      <h3>再発防止アフターケア</h3>
+      <p>ホームケア表をLINEで共有。肌を"育てる"習慣化をサポート。</p>
+    </div>
+    <div class="card">
+      <img src="icon_nowpush.svg" alt="">
+      <h3>勧誘ゼロ宣言</h3>
+      <p>都度払い・回数券自由選択。押し売りは一切ありません。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 悩み別入口 ========== -->
+<section id="concerns" style="background:#fff4fa; padding:4rem 0;">
+  <div class="container">
+    <h2>お悩みから選ぶ</h2>
+    <div class="concern-grid">
+      <div class="concern"># 毛穴詰まり</div>
+      <div class="concern"># ニキビ跡</div>
+      <div class="concern"># シミ・くすみ</div>
+      <div class="concern"># 乾燥肌</div>
+      <div class="concern"># 敏感肌</div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 人気メニュー ========== -->
+<section id="popular" class="container" style="padding:4rem 0;">
+  <h2>人気メニュー Best 3</h2>
+  <div class="menu-grid">
+    <div class="menu-card">
+      <img src="menu1.jpg" alt="">
+      <div class="text">
+        <h3>極上クリスタルハーブコース</h3>
+        <p>ハーブピーリング＋肌鎮静マスク / 90分</p>
+        <p class="price">¥14,900（税込）</p>
+      </div>
+    </div>
+    <div class="menu-card">
+      <img src="menu2.jpg" alt="">
+      <div class="text">
+        <h3>毛穴洗浄コース</h3>
+        <p>毛穴吸引＋ビタミン導入 / 70分</p>
+        <p class="price">¥13,500（税込）</p>
+      </div>
+    </div>
+    <div class="menu-card">
+      <img src="menu3.jpg" alt="">
+      <div class="text">
+        <h3>再生リペアコース</h3>
+        <p>幹細胞導入＋光フェイシャル / 60分</p>
+        <p class="price">¥11,000（税込）</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== Before & After ========== -->
+<section id="cases" style="background:#f9f9f9; padding:4rem 0;">
+  <div class="container">
+    <h2>Before / After</h2>
+    <div class="case-grid">
+      <div class="case"><img src="case1.jpg" alt=""></div>
+      <div class="case"><img src="case2.jpg" alt=""></div>
+      <div class="case"><img src="case3.jpg" alt=""></div>
+      <div class="case"><img src="case4.jpg" alt=""></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== お客様の声 ========== -->
+<section id="voices" class="container" style="padding:4rem 0;">
+  <h2>お客様の声</h2>
+  <div class="voice-slider">
+    <div class="voice">
+      <div class="stars">★★★★★</div>
+      <p>30代 / 毛穴</p>
+      <p>3回目で黒ずみがほぼ目立たなくなり、自宅ケアも続けやすいアドバイスが◎</p>
+    </div>
+    <div class="voice">
+      <div class="stars">★★★★★</div>
+      <p>20代 / ニキビ跡</p>
+      <p>勧誘がないので安心。赤みが引いてメイクのりも変わりました！</p>
+    </div>
+    <div class="voice">
+      <div class="stars">★★★★☆</div>
+      <p>40代 / しみ・たるみ</p>
+      <p>回数券を自分のペースで使えるのが嬉しい。肌がワントーン明るく。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 初回の流れ ========== -->
+<section id="flow" style="background:#fff4fa; padding:4rem 0;">
+  <div class="container">
+    <h2>初回来店の流れ</h2>
+    <ol>
+      <li>LINEからご予約</li>
+      <li>肌状態ヒアリング & 分析</li>
+      <li>施術プランご提案</li>
+      <li>オーダーメイド施術</li>
+      <li>アフターケア & ホームケア共有</li>
+    </ol>
+  </div>
+</section>
+
+<!-- ========== メニュー一覧 ========== -->
+<section id="menu" class="container" style="padding:4rem 0;">
+  <h2>メニュー & 料金</h2>
+
+  <h3>肌質改善フェイシャル</h3>
+  <table style="width:100%; border-collapse:collapse; margin-bottom:2rem;">
+    <tr><td>極上クリスタルハーブコース (90分)</td><td style="text-align:right;">¥14,900</td></tr>
+    <tr><td>毛穴洗浄コース (70分)</td><td style="text-align:right;">¥13,500</td></tr>
+    <tr><td>再生リペアコース (60分)</td><td style="text-align:right;">¥11,000</td></tr>
+  </table>
+
+  <h3>レディース脱毛</h3>
+  <table style="width:100%; border-collapse:collapse;">
+    <tr><td>Sパーツ (1回)</td><td style="text-align:right;">¥3,300</td></tr>
+    <tr><td>Lパーツ (1回)</td><td style="text-align:right;">¥6,600</td></tr>
+  </table>
+</section>
+
+<!-- ========== FAQ ========== -->
+<section id="faq" style="background:#f9f9f9; padding:4rem 0;">
+  <div class="container">
+    <h2>よくあるご質問</h2>
+    <details>
+      <summary>メイクをしたまま来店してもいいですか？</summary>
+      <p>はい、可能です。施術前にクレンジングを行います。</p>
+    </details>
+    <details>
+      <summary>勧誘や押し売りはありませんか？</summary>
+      <p>ございません。ご提案はいたしますが、都度払いだけでもご利用いただけます。</p>
+    </details>
+    <details>
+      <summary>敏感肌でも施術を受けられますか？</summary>
+      <p>事前にパッチテストを行い、刺激を抑えた施術で対応します。</p>
+    </details>
+  </div>
+</section>
+
+<!-- ========== アクセス ========== -->
+<section id="access" class="container" style="padding:4rem 0;">
+  <h2>アクセス</h2>
+  <div class="map">
+    <iframe src="https://maps.google.com/?q=富山県高岡市あわら町15-12&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+  <p>〒933-0911 富山県高岡市あわら町15-12<br>高岡駅から徒歩◯分 / 駐車場◯台</p>
+</section>
+
+</main>
+
+<!-- ========== フッター ========== -->
+<footer>
+  <p>&copy; 2025 Bloom Esthetic Salon</p>
+</footer>
+
+<!-- ========== モバイル固定CTA ========== -->
+<div class="fixed-cta" id="reserve">
+  <a href="https://lin.ee/XXXXXXX" target="_blank" rel="noopener">LINEで無料カウンセリング予約</a>
+</div>
+
+<!-- ===== FAQ開閉：アニメではなくデフォルトdetailsを利用 ===== -->
+<script>
+  /* スムーススクロール (対応ブラウザのみ) */
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const id=a.getAttribute('href');
+      if(id.startsWith('#') && document.querySelector(id)){
+        e.preventDefault();
+        document.querySelector(id).scrollIntoView({behavior:'smooth'});
+      }
+    });
+  });
+</script>
+
+</body>
 </html>
