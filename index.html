@@ -91,8 +91,17 @@
     header { padding-top: 80px; }
 
     /* ---------- フッター ---------- */
-    footer{ background:#222; color:#eee; text-align:center; padding:2rem 1rem; }
-    footer p{ font-size:.9rem; }
+    footer { background: #222; color: #eee; padding: 3rem 1rem 2rem; }
+    .footer-content { max-width: 1200px; margin: 0 auto; }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem; }
+    .footer-section h3 { color: #ff69b4; margin-bottom: 1rem; font-size: 1.1rem; }
+    .footer-section ul { list-style: none; }
+    .footer-section ul li { margin-bottom: 0.5rem; }
+    .footer-section ul li a { color: #ccc; transition: color 0.3s; }
+    .footer-section ul li a:hover { color: #ff69b4; }
+    .footer-info p { margin-bottom: 0.5rem; color: #ccc; }
+    .footer-bottom { border-top: 1px solid #444; padding-top: 1rem; text-align: center; }
+    .footer-bottom p { font-size: .9rem; color: #999; }
 
     /* ---------- 下部固定CTA モバイル ---------- */
     @media (max-width: 600px) {
@@ -306,7 +315,48 @@
 
 <!-- ========== フッター ========== -->
 <footer>
-  <p>&copy; 2025 Bloom Esthetic Salon</p>
+  <div class="footer-content">
+    <div class="footer-grid">
+      <div class="footer-section">
+        <h3>Bloom Esthetic Salon</h3>
+        <div class="footer-info">
+          <p>〒933-0911<br>富山県高岡市あわら町15-12</p>
+          <p>TEL: 076-XXX-XXXX</p>
+          <p>営業時間: 10:00-20:00</p>
+          <p>定休日: 月曜日</p>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>メニュー</h3>
+        <ul>
+          <li><a href="#popular">肌質改善フェイシャル</a></li>
+          <li><a href="#menu">レディース脱毛</a></li>
+          <li><a href="#cases">施術事例</a></li>
+          <li><a href="#faq">よくあるご質問</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>サロン情報</h3>
+        <ul>
+          <li><a href="#reasons">選ばれる理由</a></li>
+          <li><a href="#flow">施術の流れ</a></li>
+          <li><a href="#access">アクセス</a></li>
+          <li><a href="#reserve">ご予約・お問い合わせ</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>ご予約・お問い合わせ</h3>
+        <ul>
+          <li><a href="#reserve" style="color: #06C755; font-weight: 600;">📱 LINE予約（おすすめ）</a></li>
+          <li><a href="tel:076-XXX-XXXX">📞 お電話でのご予約</a></li>
+        </ul>
+        <p style="font-size: 0.9rem; color: #999; margin-top: 1rem;">LINEなら24時間いつでも<br>ご予約・ご相談を承ります</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Bloom Esthetic Salon. All rights reserved.</p>
+    </div>
+  </div>
 </footer>
 
 <!-- ========== モバイル固定CTA ========== -->
