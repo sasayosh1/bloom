@@ -3,18 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
   <title>Bloom Esthetic Salon | 肌質改善エステ</title>
 
   <!-- ===== ベース CSS ===== -->
   <style>
     /* ---------- リセット & 共通 ---------- */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { overflow-x: hidden; width: 100%; max-width: 100%; }
     body   { font-family: "Noto Sans JP", sans-serif; line-height: 1.7; color:#2c2c2c; }
     img    { max-width: 100%; height: auto; display:block; }
     a      { color: inherit; text-decoration: none; }
     h1,h2,h3,h4 { font-weight: 700; line-height: 1.3; }
     h2     { font-size: 1.75rem; margin-bottom: .75em; text-align: center; color: #2c2c2c; }
-    .container { width: min(100% - 2rem, 960px); margin-inline: auto; }
+    .container { width: min(100% - 2rem, 960px); margin-inline: auto; max-width: 100%; }
+    section { overflow-x: hidden; max-width: 100%; }
+    
+    /* 横滑り防止強化 */
+    * { max-width: 100%; }
+    div, p, h1, h2, h3, h4, h5, h6 { max-width: 100%; word-wrap: break-word; }
+    
+    /* モバイル表示で特に重要な設定 */
+    @media (max-width: 768px) {
+      body, html { overflow-x: hidden !important; max-width: 100vw !important; }
+      .container { padding: 0 1rem !important; max-width: calc(100vw - 2rem) !important; }
+      section { max-width: 100vw !important; }
+    }
 
     /* ---------- ヒーロー ---------- */
     header { position: relative; background:url("assets/header/header.jpg") center/cover no-repeat; height: 100vh; color:#fff; }
@@ -54,8 +70,16 @@
     .case::after{ content:"BEFORE / AFTER"; position:absolute; bottom:.5rem; left:50%; transform:translateX(-50%); background:rgba(0,0,0,.55); color:#fff; padding:.15rem .5rem; font-size:.8rem; border-radius:6px; }
 
     /* ---------- お客様の声 ---------- */
-    #voices .voice-slider{ display:flex; overflow-x:auto; gap:1rem; scroll-snap-type:x mandatory; }
-    .voice{ min-width:260px; scroll-snap-align:start; background:#fff; border-radius:10px; padding:1rem; box-shadow:0 4px 12px rgba(0,0,0,.05); }
+    #voices .voice-slider{ display:flex; overflow-x:auto; gap:1rem; scroll-snap-type:x mandatory; max-width: 100%; }
+    .voice{ min-width:260px; scroll-snap-align:start; background:#fff; border-radius:10px; padding:1rem; box-shadow:0 4px 12px rgba(0,0,0,.05); flex-shrink: 0; }
+    
+    /* 横スクロール要素の制御を強化 */
+    .voice-slider { 
+      -webkit-overflow-scrolling: touch; 
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .voice-slider::-webkit-scrollbar { display: none; }
     .stars{ color:#ffc107; }
 
     /* ---------- 初回来店の流れ ---------- */
@@ -228,7 +252,13 @@
 
 <!-- ========== 選ばれる理由 ========== -->
 <section id="reasons" class="container" style="padding:4rem 0;">
-  <h2 style="letter-spacing: -0.5px;">Bloomが選ばれる4つの理由</h2>
+  <h2 style="letter-spacing: -0.5px;">Bloomが選ばれる<span class="mobile-break"><br></span>4つの理由</h2>
+  <style>
+  .mobile-break { display: none; }
+  @media (max-width: 768px) {
+    .mobile-break { display: inline; }
+  }
+  </style>
   
   <div class="cards">
     <div class="card">
@@ -348,53 +378,42 @@
 <section id="popular" class="container" style="padding:4rem 0;">
   <h2>人気メニュー Best 3</h2>
   
-  <!-- 3カラムメニュー表 -->
-  <div style="background: #fff; border-radius: 15px; padding: 2rem; box-shadow: 0 8px 25px rgba(0,0,0,0.08); margin-bottom: 2rem;">
-    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-bottom: 2rem;">
-      
-      <!-- 極上クリスタルハーブコース -->
-      <div style="text-align: center; padding: 1.5rem; border: 2px solid #f0f0f0; border-radius: 12px; background: #fafafa;">
-        <h3 style="font-size: 1.1rem; color: #2c2c2c; margin-bottom: 1rem; font-weight: bold;">極上クリスタルハーブコース</h3>
-        <div style="font-size: 1.8rem; font-weight: bold; color: #2c2c2c; margin-bottom: 0.5rem;">90分</div>
-        <div style="font-size: 1.5rem; font-weight: bold; color: #2c2c2c; margin-bottom: 1rem;">¥14,900</div>
-        <div style="font-size: 0.9rem; color: #666; line-height: 1.4;">ハーブピーリングで<br>毛穴の奥まで徹底ケア</div>
-      </div>
-      
-      <!-- 毛穴洗浄コース -->
-      <div style="text-align: center; padding: 1.5rem; border: 2px solid #f0f0f0; border-radius: 12px; background: #fafafa;">
-        <h3 style="font-size: 1.1rem; color: #2c2c2c; margin-bottom: 1rem; font-weight: bold;">毛穴洗浄コース</h3>
-        <div style="font-size: 1.8rem; font-weight: bold; color: #2c2c2c; margin-bottom: 0.5rem;">70分</div>
-        <div style="font-size: 1.5rem; font-weight: bold; color: #2c2c2c; margin-bottom: 1rem;">¥13,500</div>
-        <div style="font-size: 0.9rem; color: #666; line-height: 1.4;">毛穴吸引で<br>黒ずみ・角栓を除去</div>
-      </div>
-      
-      <!-- 再生リペアコース -->
-      <div style="text-align: center; padding: 1.5rem; border: 2px solid #f0f0f0; border-radius: 12px; background: #fafafa;">
-        <h3 style="font-size: 1.1rem; color: #2c2c2c; margin-bottom: 1rem; font-weight: bold;">再生リペアコース</h3>
-        <div style="font-size: 1.8rem; font-weight: bold; color: #2c2c2c; margin-bottom: 0.5rem;">60分</div>
-        <div style="font-size: 1.5rem; font-weight: bold; color: #2c2c2c; margin-bottom: 1rem;">¥11,000</div>
-        <div style="font-size: 0.9rem; color: #666; line-height: 1.4;">幹細胞導入で<br>肌の再生力をアップ</div>
-      </div>
-      
+  <!-- 人気メニュー（縦並び） -->
+  <div style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 500px; margin: 0 auto;">
+    
+    <!-- 極上クリスタルハーブコース -->
+    <div style="text-align: center; padding: 1.5rem; border: 2px solid #f0f0f0; border-radius: 12px; background: #fafafa;">
+      <h3 style="font-size: 1.1rem; color: #2c2c2c; margin-bottom: 1rem; font-weight: bold;">極上クリスタルハーブコース</h3>
+      <div style="font-size: 1.8rem; font-weight: bold; color: #2c2c2c; margin-bottom: 0.5rem;">90分</div>
+      <div style="font-size: 1.5rem; font-weight: bold; color: #2c2c2c; margin-bottom: 1rem;">¥14,900</div>
+      <div style="font-size: 0.9rem; color: #666; line-height: 1.4;">ハーブピーリングで<br>毛穴の奥まで徹底ケア</div>
     </div>
     
+    <!-- 毛穴洗浄コース -->
+    <div style="text-align: center; padding: 1.5rem; border: 2px solid #f0f0f0; border-radius: 12px; background: #fafafa;">
+      <h3 style="font-size: 1.1rem; color: #2c2c2c; margin-bottom: 1rem; font-weight: bold;">毛穴洗浄コース</h3>
+      <div style="font-size: 1.8rem; font-weight: bold; color: #2c2c2c; margin-bottom: 0.5rem;">70分</div>
+      <div style="font-size: 1.5rem; font-weight: bold; color: #2c2c2c; margin-bottom: 1rem;">¥13,500</div>
+      <div style="font-size: 0.9rem; color: #666; line-height: 1.4;">毛穴吸引で<br>黒ずみ・角栓を除去</div>
+    </div>
+    
+    <!-- 再生リペアコース -->
+    <div style="text-align: center; padding: 1.5rem; border: 2px solid #f0f0f0; border-radius: 12px; background: #fafafa;">
+      <h3 style="font-size: 1.1rem; color: #2c2c2c; margin-bottom: 1rem; font-weight: bold;">再生リペアコース</h3>
+      <div style="font-size: 1.8rem; font-weight: bold; color: #2c2c2c; margin-bottom: 0.5rem;">60分</div>
+      <div style="font-size: 1.5rem; font-weight: bold; color: #2c2c2c; margin-bottom: 1rem;">¥11,000</div>
+      <div style="font-size: 0.9rem; color: #666; line-height: 1.4;">幹細胞導入で<br>肌の再生力をアップ</div>
+    </div>
+    
+  </div>
+    
     <!-- メニューを見るボタン -->
-    <div style="text-align: center;">
+    <div style="text-align: center; margin-top: 2.5rem;">
       <button onclick="openMenuModal()" style="background: #2c2c2c; color: white; border: none; padding: 1rem 2rem; border-radius: 8px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: all 0.3s ease;">
         すべてのメニューを見る
       </button>
     </div>
   </div>
-  
-  <!-- レスポンシブ対応 -->
-  <style>
-  @media (max-width: 768px) {
-    #popular .container > div > div:first-child {
-      grid-template-columns: 1fr !important;
-      gap: 1rem !important;
-    }
-  }
-  </style>
 </section>
 
 <!-- ========== 初回の流れ ========== -->
@@ -677,10 +696,10 @@ document.addEventListener('keydown', function(e) {
   <div class="container">
     <h2 style="text-align: center; margin-bottom: 3rem;">店舗紹介</h2>
     
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; margin-bottom: 3rem;">
-      <div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: stretch; margin-bottom: 3rem;">
+      <div style="display: flex; flex-direction: column;">
         <h3 style="color: #2c2c2c; margin-bottom: 1.5rem; font-size: 1.3rem; text-align: center;">サロンへの道のり</h3>
-        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.8rem; background: #f5f5f5; padding: 1.2rem; border-radius: 12px; height: fit-content;">
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.8rem; background: #f5f5f5; padding: 1.2rem; border-radius: 12px; flex: 1;">
           <img src="assets/access/access002.jpg" alt="アクセス1" style="width: 100%; height: 100px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
           <img src="assets/access/access003.jpg" alt="アクセス2" style="width: 100%; height: 100px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
           <img src="assets/access/access004.jpg" alt="アクセス3" style="width: 100%; height: 100px; object-fit: cover; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
@@ -690,9 +709,9 @@ document.addEventListener('keydown', function(e) {
         </div>
       </div>
       
-      <div>
+      <div style="display: flex; flex-direction: column;">
         <h3 style="color: #2c2c2c; margin-bottom: 1.5rem; font-size: 1.3rem;">Bloomの衛生ポリシー</h3>
-        <div style="background: #f9f9f9; padding: 2rem; border-radius: 12px;">
+        <div style="background: #f9f9f9; padding: 2rem; border-radius: 12px; flex: 1; display: flex; flex-direction: column; justify-content: center;">
           <div style="margin-bottom: 1.5rem;">
             <h4 style="color: #2c2c2c; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
               <span style="color: #2c2c2c;">🏠</span> 完全個室制
@@ -775,12 +794,12 @@ document.addEventListener('keydown', function(e) {
   <div style="background: #f9f9f9; padding: 2rem; border-radius: 10px; margin-top: 2rem;">
     <h3 style="margin-bottom: 1rem; color: #333;">エステティックサロン Bloom／ブルーム</h3>
     <div style="display: grid; gap: 0.8rem; font-size: 0.95rem; line-height: 1.6;">
-      <p><strong>📍 住所：</strong> 〒933-0911 富山県高岡市あわら町15-12<br>　　　　（美容室 STYLE-Bさん障）</p>
+      <p><strong>📍 住所：</strong> 〒933-0911 富山県高岡市あわら町15-12（美容室 STYLE-Bさん隣）</p>
       <p><strong>🕰️ 営業時間：</strong> 9:00～18:00 × 時間外応相談</p>
       <p><strong>📅 定休日：</strong> 不定休</p>
       <p><strong>🏎️ 駐車場：</strong> あり</p>
       <p><strong>💳 支払方法：</strong> 現金・クレジットカード各種・PAYPAY</p>
-      <p><strong>📱 ご予約＆問い合わせ：</strong><br>　　　　プロフィールページURLの公式LINE、<br>　　　　InstagramのDMよりお待ちしております。</p>
+      <p><strong>📱 ご予約＆問い合わせ：</strong> 公式LINE、InstagramのDMよりお待ちしております。</p>
     </div>
   </div>
 </section>
@@ -794,7 +813,7 @@ document.addEventListener('keydown', function(e) {
       <div class="footer-section">
         <h3>Bloom Esthetic Salon</h3>
         <div class="footer-info">
-          <p>〒933-0911<br>富山県高岡市あわら町15-12<br>（美容室 STYLE-Bさん障）</p>
+          <p>〒933-0911<br>富山県高岡市あわら町15-12<br>（美容室 STYLE-Bさん隣）</p>
           <p>営業時間: 9:00～18:00</p>
           <p>時間外応相談可能</p>
           <p>定休日: 不定休</p>
@@ -805,26 +824,27 @@ document.addEventListener('keydown', function(e) {
       <div class="footer-section">
         <h3>メニュー</h3>
         <ul>
-          <li><a href="#popular">肌質改善フェイシャル</a></li>
-          <li><a href="#menu">レディース脱毛</a></li>
+          <li><a href="#popular">人気メニューBest3</a></li>
+          <li><a href="#concerns">お悩み別メニュー</a></li>
           <li><a href="#cases">施術事例</a></li>
-          <li><a href="#faq">よくあるご質問</a></li>
         </ul>
       </div>
       <div class="footer-section">
         <h3>サロン情報</h3>
         <ul>
           <li><a href="#reasons">選ばれる理由</a></li>
-          <li><a href="#flow">施術の流れ</a></li>
-          <li><a href="#access">アクセス</a></li>
+          <li><a href="#flow">初回来店の流れ</a></li>
+          <li><a href="#voices">お客様の声</a></li>
+          <li><a href="#faq">よくあるご質問</a></li>
+          <li><a href="#access">アクセス・店舗紹介</a></li>
         </ul>
       </div>
       <div class="footer-section">
         <h3>ご予約・お問い合わせ</h3>
         <ul>
-          <li><a href="https://line.me/R/ti/p/@086bqzuj?oat_content=url&ts=08071045" target="_blank" class="footer-line-btn">LINE</a></li>
+          <li><a href="https://line.me/R/ti/p/@086bqzuj?oat_content=url&ts=08071045" target="_blank" class="footer-line-btn">LINE予約</a></li>
         </ul>
-        <p style="font-size: 0.9rem; color: #999; margin-top: 1rem;">24時間いつでもLINEから<br>ご予約・ご相談を承ります</p>
+        <p style="font-size: 0.9rem; color: #999; margin-top: 1rem;">24時間いつでもお気軽に<br>ご予約・ご相談ください</p>
       </div>
     </div>
     <div class="footer-bottom">
