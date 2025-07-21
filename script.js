@@ -2,8 +2,20 @@
 const LINE_URL = 'https://line.me/R/ti/p/@086bqzuj';
 
 async function loadInstagram() {
+  console.log('=== Instagram Loading Started ===');
+  
+  // 即座にダミー画像を表示（デバッグ用）
+  const container = document.getElementById('instagram-posts');
+  if (container) {
+    container.style.display = 'flex';
+    console.log('Instagram container found and made visible');
+  } else {
+    console.error('Instagram container not found!');
+    return;
+  }
+  
   try {
-    console.log('Loading Instagram posts...');
+    console.log('Fetching posts.json...');
     const res = await fetch('posts.json');
     
     if (!res.ok) {
@@ -11,7 +23,11 @@ async function loadInstagram() {
     }
     
     const data = await res.json();
-    console.log('Instagram data loaded:', data);
+    console.log('Instagram data loaded successfully:', data);
+    
+    if (!Array.isArray(data) || data.length === 0) {
+      throw new Error('No posts found in data');
+    }
     
     // 既存のギャラリー表示
     renderGallery(data);
@@ -19,46 +35,70 @@ async function loadInstagram() {
     // 新しいInstagramセクション表示
     renderInstagramPosts(data);
     
-    // EmbedSocialが読み込まれない場合のフォールバック表示確認
-    setTimeout(() => {
-      const embedContainer = document.getElementById('embedsocial-instagram');
-      const postsContainer = document.getElementById('instagram-posts');
-      
-      if (embedContainer && postsContainer) {
-        const embedHasContent = embedContainer.querySelector('.embedsocial-instagram')?.children.length > 0;
-        const postsHasContent = postsContainer.children.length > 0;
-        
-        if (!embedHasContent && postsHasContent) {
-          console.log('Using fallback Instagram display');
-          postsContainer.style.display = 'flex';
-          embedContainer.style.display = 'none';
-        } else if (embedHasContent) {
-          console.log('Using EmbedSocial Instagram widget');
-          postsContainer.style.display = 'none';
-          embedContainer.style.display = 'block';
-        }
-      }
-    }, 3000);
-    
   } catch (e) {
     console.error('Failed to load Instagram posts:', e);
     
-    // エラー時は空のInstagramセクションを表示
-    const container = document.getElementById('instagram-posts');
-    if (container) {
-      container.innerHTML = `
-        <div style="text-align: center; padding: 2rem; color: #666; width: 100%;">
-          <p>Instagram投稿の読み込み中...</p>
-          <p style="font-size: 0.9rem; margin-top: 0.5rem;">
-            <a href="https://www.instagram.com/bloom_estheticsalon/" target="_blank" style="color: #833ab4;">
-              @bloom_estheticsalon で最新投稿をご覧ください
-            </a>
-          </p>
-        </div>
-      `;
-      container.style.display = 'flex';
-    }
+    // エラー時はダミー画像で表示テスト
+    showDummyInstagramPosts();
   }
+}
+
+// ダミー投稿表示（デバッグ用）
+function showDummyInstagramPosts() {
+  console.log('Showing dummy Instagram posts for testing...');
+  
+  const container = document.getElementById('instagram-posts');
+  if (!container) return;
+  
+  container.innerHTML = '';
+  container.style.display = 'flex';
+  
+  // ダミー画像を6個作成
+  for (let i = 1; i <= 6; i++) {
+    const imgElement = document.createElement('div');
+    imgElement.style.cssText = `
+      width: 32%;
+      max-width: 110px;
+      aspect-ratio: 1/1;
+      background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 0.8rem;
+      text-align: center;
+    `;
+    
+    imgElement.textContent = `投稿 ${i}`;
+    
+    // PC表示用のスタイル調整
+    if (window.innerWidth >= 640) {
+      imgElement.style.width = '23%';
+      imgElement.style.maxWidth = '140px';
+    }
+    
+    // クリックでInstagramに遷移
+    imgElement.addEventListener('click', () => {
+      window.open('https://www.instagram.com/bloom_estheticsalon/', '_blank', 'noopener,noreferrer');
+    });
+    
+    // ホバーエフェクト
+    imgElement.addEventListener('mouseenter', () => {
+      imgElement.style.transform = 'scale(1.05)';
+    });
+    
+    imgElement.addEventListener('mouseleave', () => {
+      imgElement.style.transform = 'scale(1)';
+    });
+    
+    container.appendChild(imgElement);
+  }
+  
+  console.log('Dummy Instagram posts displayed');
 }
 
 function renderGallery(posts) {
@@ -87,14 +127,29 @@ function renderGallery(posts) {
 }
 
 function renderInstagramPosts(posts) {
-  const container = document.getElementById('instagram-posts');
-  if (!container || !Array.isArray(posts)) return;
+  console.log('renderInstagramPosts called with:', posts);
   
-  // コンテナを表示
+  const container = document.getElementById('instagram-posts');
+  if (!container) {
+    console.error('Instagram posts container not found!');
+    return;
+  }
+  
+  if (!Array.isArray(posts) || posts.length === 0) {
+    console.error('No valid posts array provided');
+    return;
+  }
+  
+  // コンテナをクリアして表示
+  container.innerHTML = '';
   container.style.display = 'flex';
+  
+  console.log(`Rendering ${Math.min(posts.length, 9)} Instagram posts...`);
   
   // 最新の9投稿を表示（モバイル3x3、PC4x2以上）
   posts.slice(0, 9).forEach((post, index) => {
+    console.log(`Creating post ${index + 1}:`, post);
+    
     const imgElement = document.createElement('img');
     imgElement.src = post.media_url;
     imgElement.alt = post.caption?.substring(0, 50) || `Instagram投稿 ${index + 1}`;
@@ -107,6 +162,7 @@ function renderInstagramPosts(posts) {
       border-radius: 8px;
       cursor: pointer;
       transition: transform 0.3s ease;
+      background: #f0f0f0;
     `;
     
     // PC表示用のスタイル調整
@@ -115,8 +171,26 @@ function renderInstagramPosts(posts) {
       imgElement.style.maxWidth = '140px';
     }
     
+    // 画像読み込み完了時のログ
+    imgElement.addEventListener('load', () => {
+      console.log(`Image ${index + 1} loaded successfully`);
+    });
+    
+    // 画像読み込み失敗時の処理
+    imgElement.addEventListener('error', () => {
+      console.error(`Failed to load image ${index + 1}:`, post.media_url);
+      imgElement.style.background = 'linear-gradient(45deg, #833ab4, #fd1d1d)';
+      imgElement.style.display = 'flex';
+      imgElement.style.alignItems = 'center';
+      imgElement.style.justifyContent = 'center';
+      imgElement.style.color = 'white';
+      imgElement.style.fontSize = '0.8rem';
+      imgElement.textContent = `投稿 ${index + 1}`;
+    });
+    
     // クリックでInstagramに遷移
     imgElement.addEventListener('click', () => {
+      console.log(`Clicked on post ${index + 1}, opening:`, post.permalink);
       window.open(post.permalink, '_blank', 'noopener,noreferrer');
     });
     
@@ -132,7 +206,7 @@ function renderInstagramPosts(posts) {
     container.appendChild(imgElement);
   });
   
-  console.log(`Instagram posts loaded: ${posts.length} posts found, ${Math.min(posts.length, 9)} displayed`);
+  console.log(`Instagram posts rendered: ${posts.length} posts found, ${Math.min(posts.length, 9)} displayed`);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
