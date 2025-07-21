@@ -6,6 +6,11 @@ on:
     - cron: '0 2 * * *'
   workflow_dispatch:
     # 手動実行も可能
+    inputs:
+      reason:
+        description: 'キャッシュクリアの理由'
+        required: false
+        default: '手動実行'
 
 jobs:
   cache-clear:

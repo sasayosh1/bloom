@@ -1,0 +1,82 @@
+name: 🔄 Manual Cache Clear
+
+on:
+  workflow_dispatch:
+    inputs:
+      clear_type:
+        description: 'クリアの種類'
+        required: true
+        default: 'すべて'
+        type: choice
+        options:
+        - 'すべて'
+        - 'ブラウザキャッシュのみ'
+        - 'アセットバージョンのみ'
+
+jobs:
+  manual-cache-clear:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: Clear Cache
+      run: |
+        echo "🔄 手動キャッシュクリアを開始..."
+        echo "選択されたオプション: ${{ github.event.inputs.clear_type }}"
+        
+        # タイムスタンプ生成
+        TIMESTAMP=$(date +%s)
+        
+        # HTMLファイル内のキャッシュバスター更新
+        if [[ "${{ github.event.inputs.clear_type }}" == "すべて" ]] || [[ "${{ github.event.inputs.clear_type }}" == "アセットバージョンのみ" ]]; then
+          echo "📦 アセットバージョンを更新中..."
+          
+          # CSS/JSファイルにバージョンクエリ追加
+          sed -i "s/\(assets\/[^\"]*\.\(css\|js\)\)\([^\"]*\)\"/\1?v=$TIMESTAMP\"/g" index.html || true
+          
+          echo "✅ アセットバージョン更新完了 (v=$TIMESTAMP)"
+        fi
+        
+        # HTTPメタタグ更新
+        if [[ "${{ github.event.inputs.clear_type }}" == "すべて" ]] || [[ "${{ github.event.inputs.clear_type }}" == "ブラウザキャッシュのみ" ]]; then
+          echo "🌐 ブラウザキャッシュ設定を更新中..."
+          
+          # より強力なno-cacheディレクティブに置換
+          sed -i 's/content="no-cache, no-store, must-revalidate[^"]*"/content="no-cache, no-store, must-revalidate, max-age=0, s-maxage=0, proxy-revalidate"/g' index.html || true
+          
+          echo "✅ ブラウザキャッシュ設定更新完了"
+        fi
+        
+        # 結果をcache-status.txtに記録
+        echo "Manual Cache Clear Results" > cache-status.txt
+        echo "=========================" >> cache-status.txt
+        echo "Executed: $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> cache-status.txt
+        echo "Type: ${{ github.event.inputs.clear_type }}" >> cache-status.txt
+        echo "Timestamp: $TIMESTAMP" >> cache-status.txt
+        echo "Status: SUCCESS ✅" >> cache-status.txt
+        
+        echo "🎉 手動キャッシュクリア完了!"
+        
+    - name: Commit changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action (Manual)"
+        
+        if git diff --quiet; then
+          echo "変更はありませんでした"
+        else
+          git add .
+          git commit -m "🔄 Manual cache clear - ${{ github.event.inputs.clear_type }}
+
+          Executed at: $(date -u '+%Y-%m-%d %H:%M:%S UTC')
+          Cache clear type: ${{ github.event.inputs.clear_type }}
+          
+          🤖 Manually triggered via GitHub Actions"
+          git push
+          echo "✅ 変更をコミット・プッシュしました"
+        fi
