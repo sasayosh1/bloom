@@ -1,0 +1,11 @@
+Cache Clear Status
+==================
+Last manual clear: 2025-07-21 14:30:00 UTC
+Next scheduled clear: Daily at 02:00 UTC (11:00 JST)
+
+Cache busting methods:
+- HTTP meta tags (no-cache, no-store, must-revalidate)
+- Asset versioning with timestamps (?v=timestamp)
+- Automated daily refresh via GitHub Actions
+
+Status: Active ✅

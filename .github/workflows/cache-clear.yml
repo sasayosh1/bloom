@@ -1,0 +1,58 @@
+name: Cache Clear & Force Refresh
+
+on:
+  schedule:
+    # 毎日午前2時（JST午前11時）にキャッシュクリア
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+    # 手動実行も可能
+
+jobs:
+  cache-clear:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: write
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: Update cache busting timestamp
+      run: |
+        # index.htmlのキャッシュバスターを更新
+        TIMESTAMP=$(date +%s)
+        
+        # CSSとJSファイルにタイムスタンプクエリを追加
+        sed -i "s/assets\/\([^\"]*\.css\)/assets\/\1?v=$TIMESTAMP/g" index.html || true
+        sed -i "s/assets\/\([^\"]*\.js\)/assets\/\1?v=$TIMESTAMP/g" index.html || true
+        
+        # メタタグの更新（既存のものがあれば置換、なければ追加）
+        if grep -q "http-equiv=\"Cache-Control\"" index.html; then
+          sed -i "s/<meta http-equiv=\"Cache-Control\"[^>]*>/<meta http-equiv=\"Cache-Control\" content=\"no-cache, no-store, must-revalidate, max-age=0\">/" index.html
+          sed -i "s/<meta http-equiv=\"Expires\"[^>]*>/<meta http-equiv=\"Expires\" content=\"0\">/" index.html
+        fi
+        
+        # タイムスタンプファイル作成
+        echo "Last cache clear: $(date -u '+%Y-%m-%d %H:%M:%S UTC')" > cache-status.txt
+        
+        echo "Cache busting timestamp: $TIMESTAMP" >> cache-status.txt
+        
+    - name: Commit cache updates
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        
+        if git diff --quiet; then
+          echo "No cache updates needed"
+        else
+          git add .
+          git commit -m "🔄 Auto cache clear - $(date -u '+%Y-%m-%d %H:%M:%S UTC')
+
+          - Update cache busting parameters
+          - Force browser cache refresh
+          - Automated daily maintenance
+          
+          🤖 Generated with GitHub Actions"
+          git push
+        fi
