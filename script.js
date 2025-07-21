@@ -132,4 +132,17 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+  
+  // Instagram セクションのフェードインアニメーション
+  const insta = document.getElementById('instagram');
+  if (insta) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          insta.classList.add('fade-in');
+        }
+      });
+    }, { threshold: 0.3 });
+    obs.observe(insta);
+  }
 });

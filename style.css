@@ -3,6 +3,11 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+html, body {
+  overflow-x: hidden;
+}
+
 body {
   font-family: 'Noto Sans', sans-serif;
   color: #444;
@@ -1109,5 +1114,107 @@ body {
   .insta-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 0.5rem;
+  }
+}
+
+/* ========== Instagram Section Styles ========== */
+#instagram {
+  max-width: 100%;
+  overflow: hidden;
+  padding: 2rem 0;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+#instagram.fade-in {
+  opacity: 1;
+}
+
+#instagram .feed {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  padding: 0 1rem;
+}
+
+#instagram .feed img {
+  width: 32%;
+  max-width: 110px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+#instagram .feed img:hover {
+  transform: scale(1.05);
+}
+
+#instagram a[href*="instagram.com"]:hover {
+  transform: scale(1.05);
+}
+
+.instagram-post {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.instagram-post:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.instagram-post img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.instagram-post-content {
+  padding: 1.5rem;
+}
+
+.instagram-caption {
+  color: #333;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.instagram-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #888;
+  font-size: 0.85rem;
+}
+
+.instagram-likes {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* PC表示: 3行 */
+@media (min-width: 640px) {
+  #instagram .feed img {
+    width: 23%;
+    max-width: 140px;
+  }
+}
+
+/* モバイル表示: 2行 */
+@media (max-width: 639px) {
+  #instagram .feed img {
+    width: 32%;
+    max-width: 110px;
   }
 }
