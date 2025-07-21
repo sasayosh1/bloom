@@ -6,6 +6,7 @@ async function loadInstagram() {
     const res = await fetch('posts.json');
     const data = await res.json();
     renderGallery(data);
+    renderInstagramPosts(data);
   } catch (e) {
     console.error('Failed to load Instagram posts', e);
   }
@@ -33,6 +34,43 @@ function renderGallery(posts) {
       a.appendChild(play);
     }
     grid.appendChild(a);
+  });
+}
+
+function renderInstagramPosts(posts) {
+  const container = document.getElementById('instagram-posts');
+  if (!container || !Array.isArray(posts)) return;
+  
+  // 最新の6投稿を表示
+  posts.slice(0, 6).forEach((post) => {
+    const postElement = document.createElement('div');
+    postElement.className = 'instagram-post';
+    
+    // 投稿日時をフォーマット
+    const postDate = new Date(post.timestamp);
+    const formatDate = postDate.toLocaleDateString('ja-JP', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+    });
+    
+    postElement.innerHTML = `
+      <a href="${post.permalink}" target="_blank" rel="noopener" style="text-decoration: none; color: inherit;">
+        <img src="${post.media_url}" alt="${post.caption?.substring(0, 100) || 'Instagram投稿'}" loading="lazy">
+        <div class="instagram-post-content">
+          <div class="instagram-caption">${post.caption || ''}</div>
+          <div class="instagram-meta">
+            <span>${formatDate}</span>
+            <div class="instagram-likes">
+              <span>❤️</span>
+              <span>${post.likes_count || 0}</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    `;
+    
+    container.appendChild(postElement);
   });
 }
 

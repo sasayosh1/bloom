@@ -2,7 +2,7 @@ name: Fetch Instagram Posts
 
 on:
   schedule:
-    - cron: '0 */12 * * *' # 12時間ごと
+    - cron: '0 */2 * * *' # 2時間ごと（リアルタイム性向上）
   workflow_dispatch:
 
 jobs:

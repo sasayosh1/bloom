@@ -11,8 +11,9 @@
 - **ワークフロー**: `.github/workflows/auto-deploy.yml`
 
 ### 📱 Instagram自動更新
-- **頻度**: 12時間ごと
+- **頻度**: 2時間ごと（リアルタイム性向上）
 - **処理**: Instagram投稿を取得して`posts.json`を自動更新・コミット
+- **表示**: LP内のInstagramセクションで最新6投稿を表示
 - **ワークフロー**: `.github/workflows/fetch_instagram.yml`
 
 ### 🔄 自動キャッシュクリア
@@ -78,7 +79,8 @@ bloom/
 - ✅ 横滑り防止対策済み
 - ✅ 自動デプロイ
 - ✅ 自動キャッシュクリア（毎日）
-- ✅ Instagram投稿自動取得
+- ✅ Instagram投稿自動取得（2時間ごと）
+- ✅ Instagram投稿表示セクション（最新6投稿）
 - ✅ LINE連携
 - ✅ メニューモーダル
 - ✅ スムーススクロール

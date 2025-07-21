@@ -808,6 +808,84 @@ document.addEventListener('keydown', function(e) {
   </div>
 </section>
 
+<!-- ========== Instagram ========== -->
+<section id="instagram" class="container" style="padding:4rem 0;">
+  <h2 style="text-align: center; margin-bottom: 3rem;">Instagram</h2>
+  <div style="text-align: center; margin-bottom: 2rem;">
+    <p style="color: #666; font-size: 1.1rem;">最新の施術例やサロンの雰囲気をInstagramでチェック</p>
+    <a href="https://www.instagram.com/bloom_estheticsalon/" target="_blank" 
+       style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); color: white; text-decoration: none; border-radius: 25px; font-weight: bold; margin-top: 1rem; transition: transform 0.3s ease;">
+      <span style="font-size: 1.2rem;">📷</span>
+      @bloom_estheticsalon をフォロー
+    </a>
+  </div>
+  
+  <div id="instagram-posts" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+    <!-- Instagram posts will be loaded here -->
+  </div>
+  
+  <style>
+  @media (max-width: 768px) {
+    #instagram-posts {
+      grid-template-columns: 1fr !important;
+      gap: 1rem !important;
+    }
+  }
+  
+  #instagram a[href*="instagram.com"]:hover {
+    transform: scale(1.05);
+  }
+  
+  .instagram-post {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .instagram-post:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  }
+  
+  .instagram-post img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+  }
+  
+  .instagram-post-content {
+    padding: 1.5rem;
+  }
+  
+  .instagram-caption {
+    color: #333;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .instagram-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #888;
+    font-size: 0.85rem;
+  }
+  
+  .instagram-likes {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  </style>
+</section>
+
 <!-- ========== アクセス ========== -->
 <section id="access" class="container" style="padding:4rem 0;">
   <h2>アクセス</h2>
