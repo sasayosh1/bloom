@@ -820,7 +820,14 @@ document.addEventListener('keydown', function(e) {
     </a>
   </div>
   
-  <div id="instagram-posts" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+  <!-- EmbedSocial Instagram Widget -->
+  <div id="embedsocial-instagram" style="margin-top: 2rem;">
+    <div class='embedsocial-instagram' data-ref='8c8c7f4a96a7b4e6c3e7a4d8f9b2e5c1'></div>
+    <script>(function(d, s, id){var js; if (d.getElementById(id)) {return;} js = d.createElement(s); js.id = id; js.src = "https://embedsocial.com/cdn/ht.js"; d.getElementsByTagName("head")[0].appendChild(js);}(document, "script", "EmbedSocialHashtagScript"));</script>
+  </div>
+  
+  <!-- Fallback: Manual Instagram posts (if EmbedSocial unavailable) -->
+  <div id="instagram-posts" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 2rem; display: none;">
     <!-- Instagram posts will be loaded here -->
   </div>
   
