@@ -347,32 +347,54 @@
 <!-- ========== 人気メニュー ========== -->
 <section id="popular" class="container" style="padding:4rem 0;">
   <h2>人気メニュー Best 3</h2>
-  <div class="menu-grid">
-    <div class="menu-card">
-      <img src="assets/aroma/aroma001.jpg" alt="極上クリスタルハーブコース">
-      <div class="text">
-        <h3>極上クリスタルハーブコース</h3>
-        <p>ハーブピーリング＋肌鎮静マスク / 90分</p>
-        <p class="price">¥14,900（税込）</p>
+  
+  <!-- 3カラムメニュー表 -->
+  <div style="background: #fff; border-radius: 15px; padding: 2rem; box-shadow: 0 8px 25px rgba(0,0,0,0.08); margin-bottom: 2rem;">
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-bottom: 2rem;">
+      
+      <!-- 極上クリスタルハーブコース -->
+      <div style="text-align: center; padding: 1.5rem; border: 2px solid #f0f0f0; border-radius: 12px; background: #fafafa;">
+        <h3 style="font-size: 1.1rem; color: #2c2c2c; margin-bottom: 1rem; font-weight: bold;">極上クリスタルハーブコース</h3>
+        <div style="font-size: 1.8rem; font-weight: bold; color: #2c2c2c; margin-bottom: 0.5rem;">90分</div>
+        <div style="font-size: 1.5rem; font-weight: bold; color: #2c2c2c; margin-bottom: 1rem;">¥14,900</div>
+        <div style="font-size: 0.9rem; color: #666; line-height: 1.4;">ハーブピーリングで<br>毛穴の奥まで徹底ケア</div>
       </div>
+      
+      <!-- 毛穴洗浄コース -->
+      <div style="text-align: center; padding: 1.5rem; border: 2px solid #f0f0f0; border-radius: 12px; background: #fafafa;">
+        <h3 style="font-size: 1.1rem; color: #2c2c2c; margin-bottom: 1rem; font-weight: bold;">毛穴洗浄コース</h3>
+        <div style="font-size: 1.8rem; font-weight: bold; color: #2c2c2c; margin-bottom: 0.5rem;">70分</div>
+        <div style="font-size: 1.5rem; font-weight: bold; color: #2c2c2c; margin-bottom: 1rem;">¥13,500</div>
+        <div style="font-size: 0.9rem; color: #666; line-height: 1.4;">毛穴吸引で<br>黒ずみ・角栓を除去</div>
+      </div>
+      
+      <!-- 再生リペアコース -->
+      <div style="text-align: center; padding: 1.5rem; border: 2px solid #f0f0f0; border-radius: 12px; background: #fafafa;">
+        <h3 style="font-size: 1.1rem; color: #2c2c2c; margin-bottom: 1rem; font-weight: bold;">再生リペアコース</h3>
+        <div style="font-size: 1.8rem; font-weight: bold; color: #2c2c2c; margin-bottom: 0.5rem;">60分</div>
+        <div style="font-size: 1.5rem; font-weight: bold; color: #2c2c2c; margin-bottom: 1rem;">¥11,000</div>
+        <div style="font-size: 0.9rem; color: #666; line-height: 1.4;">幹細胞導入で<br>肌の再生力をアップ</div>
+      </div>
+      
     </div>
-    <div class="menu-card">
-      <img src="assets/aroma/aroma002.jpg" alt="毛穴洗浄コース">
-      <div class="text">
-        <h3>毛穴洗浄コース</h3>
-        <p>毛穴吸引＋ビタミン導入 / 70分</p>
-        <p class="price">¥13,500（税込）</p>
-      </div>
-    </div>
-    <div class="menu-card">
-      <img src="assets/aroma/aroma003.jpg" alt="再生リペアコース">
-      <div class="text">
-        <h3>再生リペアコース</h3>
-        <p>幹細胞導入＋光フェイシャル / 60分</p>
-        <p class="price">¥11,000（税込）</p>
-      </div>
+    
+    <!-- メニューを見るボタン -->
+    <div style="text-align: center;">
+      <button onclick="openMenuModal()" style="background: #2c2c2c; color: white; border: none; padding: 1rem 2rem; border-radius: 8px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: all 0.3s ease;">
+        すべてのメニューを見る
+      </button>
     </div>
   </div>
+  
+  <!-- レスポンシブ対応 -->
+  <style>
+  @media (max-width: 768px) {
+    #popular .container > div > div:first-child {
+      grid-template-columns: 1fr !important;
+      gap: 1rem !important;
+    }
+  }
+  </style>
 </section>
 
 <!-- ========== 初回の流れ ========== -->
@@ -443,8 +465,19 @@
   </div>
 </section>
 
+<!-- ========== メニューモーダル ========== -->
+<div id="menuModal" style="display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); overflow-y: auto;">
+  <div style="background: white; margin: 2% auto; padding: 0; width: 90%; max-width: 800px; border-radius: 15px; position: relative; max-height: 90vh; overflow-y: auto;">
+    <!-- モーダルヘッダー -->
+    <div style="padding: 1.5rem 2rem; border-bottom: 1px solid #eee; position: sticky; top: 0; background: white; border-radius: 15px 15px 0 0; z-index: 10;">
+      <h2 style="margin: 0; color: #2c2c2c;">メニュー & 料金</h2>
+      <button onclick="closeMenuModal()" style="position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); background: none; border: none; font-size: 2rem; color: #666; cursor: pointer; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">&times;</button>
+    </div>
+    
+    <!-- モーダルコンテンツ -->
+    <div style="padding: 2rem;">
+
 <!-- ========== メニュー一覧 ========== -->
-<section id="menu" class="container" style="padding:4rem 0;">
   <h2>メニュー & 料金</h2>
 
   <!-- 肌質改善フェイシャル -->
@@ -608,7 +641,37 @@
       </div>
     </div>
   </div>
-</section>
+
+    </div>
+  </div>
+</div>
+
+<!-- メニューモーダル用JavaScript -->
+<script>
+function openMenuModal() {
+  document.getElementById('menuModal').style.display = 'block';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMenuModal() {
+  document.getElementById('menuModal').style.display = 'none';
+  document.body.style.overflow = 'auto';
+}
+
+// モーダル背景クリックで閉じる
+document.getElementById('menuModal').addEventListener('click', function(e) {
+  if (e.target === this) {
+    closeMenuModal();
+  }
+});
+
+// ESCキーで閉じる
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeMenuModal();
+  }
+});
+</script>
 
 <!-- ========== 完全個室と徹底衛生 ========== -->
 <section id="hygiene" style="background:#fff; padding:4rem 0;">
