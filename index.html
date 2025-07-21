@@ -3,9 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
+  <meta name="cache-control" content="no-cache">
+  <meta name="expires" content="0">
+  <meta name="pragma" content="no-cache">
   <title>Bloom Esthetic Salon | 肌質改善エステ</title>
 
   <!-- ===== ベース CSS ===== -->
@@ -257,6 +260,10 @@
   .mobile-break { display: none; }
   @media (max-width: 768px) {
     .mobile-break { display: inline; }
+    #reasons {
+      padding-top: 8rem !important;
+      margin-top: 2rem !important;
+    }
   }
   </style>
   
