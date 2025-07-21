@@ -92,6 +92,78 @@
     header { padding-top: 80px; }
 
 
+    /* ---------- 初回の流れ ---------- */
+    .flow-container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    .main-title {
+        text-align: center;
+        color: #d87093;
+        font-size: 28px;
+        margin-bottom: 40px;
+        font-weight: bold;
+    }
+    .flow-steps {
+        list-style: none;
+        padding: 0;
+        position: relative;
+    }
+    .flow-steps::before {
+        content: '';
+        position: absolute;
+        top: 25px;
+        bottom: 25px;
+        left: 24px;
+        width: 2px;
+        background: #f0aabf;
+        border: 1px dashed #f0aabf;
+    }
+    .flow-step {
+        position: relative;
+        margin-bottom: 40px;
+        padding-left: 60px;
+    }
+    .flow-step:last-child {
+        margin-bottom: 0;
+    }
+    .step-number {
+        position: absolute;
+        left: 0;
+        top: -5px;
+        width: 50px;
+        height: 50px;
+        background-color: #f08080;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        font-weight: bold;
+        border: 3px solid white;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .step-content {
+        background-color: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+    .step-title {
+        font-size: 20px;
+        color: #d87093;
+        font-weight: bold;
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+    .step-description {
+        font-size: 16px;
+        line-height: 1.6;
+        margin: 0 0 15px 0;
+    }
+
     /* ---------- フッター ---------- */
     footer { background: #222; color: #eee; padding: 3rem 1rem 2rem; }
     .footer-content { max-width: 1200px; margin: 0 auto; }
@@ -256,16 +328,46 @@
 </section>
 
 <!-- ========== 初回の流れ ========== -->
-<section id="flow" style="background:#fff4fa; padding:4rem 0;">
-  <div class="container">
-    <h2>初回来店の流れ</h2>
-    <ol>
-      <li>LINEからご予約</li>
-      <li>肌状態ヒアリング & 分析</li>
-      <li>施術プランご提案</li>
-      <li>オーダーメイド施術</li>
-      <li>アフターケア & ホームケア共有</li>
-    </ol>
+<section id="flow" style="background:#FFF8FA; padding:4rem 0;">
+  <div class="flow-container">
+    <h1 class="main-title">初回来店の流れ</h1>
+    <ul class="flow-steps">
+      <li class="flow-step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h2 class="step-title">LINEからご予約</h2>
+          <p class="step-description">まずはLINE公式アカウントから、ご希望の日時をお気軽にご連絡ください。24時間いつでも予約可能です。</p>
+        </div>
+      </li>
+      <li class="flow-step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h2 class="step-title">肌状態ヒアリング & 分析</h2>
+          <p class="step-description">専門カウンセラーがお客様の肌のお悩みや状態を丁寧にヒアリングし、専用の機器で詳しく分析します。</p>
+        </div>
+      </li>
+      <li class="flow-step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h2 class="step-title">施術プランのご提案</h2>
+          <p class="step-description">分析結果を元に、お客様の肌に最も合ったオーダーメイドの施術プランを分かりやすくご提案いたします。</p>
+        </div>
+      </li>
+      <li class="flow-step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h2 class="step-title">オーダーメイド施術</h2>
+          <p class="step-description">ご納得いただいたプランに沿って、経験豊富なエステティシャンが心を込めて丁寧に施術を行います。</p>
+        </div>
+      </li>
+      <li class="flow-step">
+        <div class="step-number">5</div>
+        <div class="step-content">
+          <h2 class="step-title">アフターケア & ホームケア共有</h2>
+          <p class="step-description">施術後の効果を長持ちさせるためのアフターケアや、ご自宅での最適なケア方法をアドバイスします。</p>
+        </div>
+      </li>
+    </ul>
   </div>
 </section>
 
