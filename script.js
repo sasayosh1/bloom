@@ -210,6 +210,8 @@ function renderInstagramPosts(posts) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  console.log('DOM loaded, starting initialization...');
+  
   // LINE URLの設定
   document.querySelectorAll('#line-link, #line-link-2, #nav-line-link, #footer-line-link').forEach((el) => {
     el.href = LINE_URL;
@@ -217,6 +219,19 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Instagram投稿の読み込み
   loadInstagram();
+  
+  // 緊急用：1秒後にダミー表示を強制実行
+  setTimeout(() => {
+    const container = document.getElementById('instagram-posts');
+    if (container) {
+      if (container.children.length === 0) {
+        console.log('No Instagram content found, showing dummy posts...');
+        showDummyInstagramPosts();
+      } else {
+        console.log('Instagram content already loaded:', container.children.length, 'items');
+      }
+    }
+  }, 1000);
   
   // ハンバーガーメニューの実装
   const navToggle = document.querySelector('.nav-toggle');
@@ -271,6 +286,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Instagram セクションのフェードインアニメーション
   const insta = document.getElementById('instagram');
   if (insta) {
+    // 即座にfade-inクラスを追加（テスト用）
+    insta.classList.add('fade-in');
+    
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -280,4 +298,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.3 });
     obs.observe(insta);
   }
+  
+  // Instagram投稿が表示されない場合の緊急対策
+  setTimeout(() => {
+    const container = document.getElementById('instagram-posts');
+    if (container && container.children.length === 0) {
+      console.log('Instagram posts not loaded, forcing dummy display...');
+      showDummyInstagramPosts();
+    }
+  }, 2000);
 });

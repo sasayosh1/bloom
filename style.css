@@ -1122,7 +1122,7 @@ body {
   max-width: 100%;
   overflow: hidden;
   padding: 2rem 0;
-  opacity: 0;
+  opacity: 1; /* 一時的に常に表示 */
   transition: opacity 0.8s ease;
 }
 
