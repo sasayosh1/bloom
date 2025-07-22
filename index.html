@@ -311,23 +311,170 @@
 <!-- ========== お客様の声 ========== -->
 <section id="voices" class="container" style="padding:4rem 0;">
   <h2>お客様の声</h2>
-  <div class="voice-slider">
-    <div class="voice">
-      <div class="stars">★★★★★</div>
-      <p>30代 / 毛穴</p>
-      <p>3回目で黒ずみがほぼ目立たなくなり、自宅ケアも続けやすいアドバイスが◎</p>
+  <div style="text-align: center; margin-bottom: 1.5rem;">
+    <p style="color: #666; font-size: 0.9rem; margin: 0;">
+      📱 横にスワイプして他の声もご覧ください
+    </p>
+  </div>
+  
+  <div class="voice-slider-container">
+    <div class="voice-slider">
+      <div class="voice">
+        <div class="stars">★★★★★</div>
+        <p>30代 / 毛穴</p>
+        <p>3回目で黒ずみがほぼ目立たなくなり、自宅ケアも続けやすいアドバイスが◎</p>
+      </div>
+      <div class="voice">
+        <div class="stars">★★★★★</div>
+        <p>20代 / ニキビ跡</p>
+        <p>勧誘がないので安心。赤みが引いてメイクのりも変わりました！</p>
+      </div>
+      <div class="voice">
+        <div class="stars">★★★★☆</div>
+        <p>40代 / しみ・たるみ</p>
+        <p>回数券を自分のペースで使えるのが嬉しい。肌がワントーン明るく。</p>
+      </div>
+      <div class="voice">
+        <div class="stars">★★★★★</div>
+        <p>50代 / エイジングケア</p>
+        <p>丁寧なカウンセリングで安心。肌のハリが戻って若返った気分です！</p>
+      </div>
+      <div class="voice">
+        <div class="stars">★★★★★</div>
+        <p>40代 / 乾燥肌</p>
+        <p>保湿力が格段にアップ。季節の変わり目も肌トラブルなしです。</p>
+      </div>
     </div>
-    <div class="voice">
-      <div class="stars">★★★★★</div>
-      <p>20代 / ニキビ跡</p>
-      <p>勧誘がないので安心。赤みが引いてメイクのりも変わりました！</p>
-    </div>
-    <div class="voice">
-      <div class="stars">★★★★☆</div>
-      <p>40代 / しみ・たるみ</p>
-      <p>回数券を自分のペースで使えるのが嬉しい。肌がワントーン明るく。</p>
+    
+    <!-- スクロールインジケーター -->
+    <div class="scroll-indicator">
+      <div class="scroll-dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
     </div>
   </div>
+  
+  <style>
+  /* お客様の声 - 改善版 */
+  .voice-slider-container {
+    position: relative;
+  }
+  
+  .voice-slider {
+    display: flex;
+    overflow-x: auto;
+    gap: 1rem;
+    scroll-snap-type: x mandatory;
+    max-width: 100%;
+    padding: 0 0.5rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .voice-slider::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .voice {
+    min-width: 280px;
+    scroll-snap-align: start;
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    flex-shrink: 0;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+  }
+  
+  .voice:hover {
+    border-color: #2c2c2c;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  }
+  
+  .scroll-indicator {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+  }
+  
+  .scroll-dots {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #ddd;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .dot.active {
+    background: #2c2c2c;
+  }
+  
+  /* モバイル専用の改善 */
+  @media (max-width: 768px) {
+    .voice {
+      min-width: 260px;
+      padding: 1.2rem;
+    }
+    
+    /* 左右のグラデーション表示 */
+    .voice-slider-container::before,
+    .voice-slider-container::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 40px;
+      width: 20px;
+      pointer-events: none;
+      z-index: 1;
+    }
+    
+    .voice-slider-container::before {
+      left: 0;
+      background: linear-gradient(to right, rgba(255,255,255,0.8), transparent);
+    }
+    
+    .voice-slider-container::after {
+      right: 0;
+      background: linear-gradient(to left, rgba(255,255,255,0.8), transparent);
+    }
+  }
+  
+  /* PC表示では通常のグリッド */
+  @media (min-width: 769px) {
+    .voice-slider {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      overflow: visible;
+      gap: 1.5rem;
+    }
+    
+    .voice {
+      min-width: auto;
+    }
+    
+    .scroll-indicator {
+      display: none;
+    }
+    
+    .voice-slider-container::before,
+    .voice-slider-container::after {
+      display: none;
+    }
+  }
+  </style>
 </section>
 
 <!-- ========== Instagram ========== -->
@@ -1036,6 +1183,60 @@ document.addEventListener('keydown', function(e) {
     const menu = document.querySelector('.nav-menu');
     menu.classList.toggle('active');
   }
+  
+  /* お客様の声 - スクロールドット機能 */
+  document.addEventListener('DOMContentLoaded', function() {
+    const voiceSlider = document.querySelector('.voice-slider');
+    const dots = document.querySelectorAll('.dot');
+    const voices = document.querySelectorAll('.voice');
+    
+    if (!voiceSlider || !dots.length || !voices.length) return;
+    
+    // ドットクリック時のスクロール
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        const targetVoice = voices[index];
+        if (targetVoice) {
+          targetVoice.scrollIntoView({
+            behavior: 'smooth',
+            block: 'nearest',
+            inline: 'start'
+          });
+          updateActiveDot(index);
+        }
+      });
+    });
+    
+    // スクロール時のドット更新
+    let scrollTimeout;
+    voiceSlider.addEventListener('scroll', () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        updateActiveBasedOnScroll();
+      }, 100);
+    });
+    
+    function updateActiveDot(activeIndex) {
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === activeIndex);
+      });
+    }
+    
+    function updateActiveBasedOnScroll() {
+      const scrollLeft = voiceSlider.scrollLeft;
+      const containerWidth = voiceSlider.clientWidth;
+      const voiceWidth = voices[0].offsetWidth + 16; // voice width + gap
+      
+      // 現在表示されている最初のアイテムのインデックスを計算
+      const currentIndex = Math.round(scrollLeft / voiceWidth);
+      const clampedIndex = Math.max(0, Math.min(currentIndex, voices.length - 1));
+      
+      updateActiveDot(clampedIndex);
+    }
+    
+    // 初期状態のドット設定
+    updateActiveDot(0);
+  });
 </script>
 
 
