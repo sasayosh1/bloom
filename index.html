@@ -1207,14 +1207,30 @@ document.addEventListener('keydown', function(e) {
       });
     });
     
-    // スクロール時のドット更新
-    let scrollTimeout;
+    // スクロール時のドット更新 - 即座に反応
     voiceSlider.addEventListener('scroll', () => {
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(() => {
-        updateActiveBasedOnScroll();
-      }, 100);
-    });
+      updateActiveBasedOnScroll();
+    }, { passive: true });
+    
+    // Intersection Observer でより正確な検出
+    const observerOptions = {
+      root: voiceSlider,
+      rootMargin: '0px',
+      threshold: 0.6
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const index = Array.from(voices).indexOf(entry.target);
+          if (index >= 0) {
+            updateActiveDot(index);
+          }
+        }
+      });
+    }, observerOptions);
+    
+    voices.forEach(voice => observer.observe(voice));
     
     function updateActiveDot(activeIndex) {
       dots.forEach((dot, index) => {
@@ -1224,13 +1240,9 @@ document.addEventListener('keydown', function(e) {
     
     function updateActiveBasedOnScroll() {
       const scrollLeft = voiceSlider.scrollLeft;
-      const containerWidth = voiceSlider.clientWidth;
-      const voiceWidth = voices[0].offsetWidth + 16; // voice width + gap
-      
-      // 現在表示されている最初のアイテムのインデックスを計算
+      const voiceWidth = voices[0].offsetWidth + 16;
       const currentIndex = Math.round(scrollLeft / voiceWidth);
       const clampedIndex = Math.max(0, Math.min(currentIndex, voices.length - 1));
-      
       updateActiveDot(clampedIndex);
     }
     
