@@ -466,68 +466,163 @@
 <section id="flow" style="background:#ffffff; padding:4rem 0;">
   <div class="flow-container">
     <h1 class="main-title">初回来店の流れ</h1>
-    <ul class="flow-steps">
-      <li class="flow-step">
-        <div class="step-number">1</div>
+    <div class="flow-toggle">
+      <details>
+        <summary>
+          <span class="step-number">1</span>
+          <span class="step-title">LINEからご予約</span>
+        </summary>
         <div class="step-content">
-          <h2 class="step-title">LINEからご予約</h2>
           <p class="step-description">まずはLINE公式アカウントから、ご希望の日時をお気軽にご連絡ください。24時間いつでも予約可能です。</p>
         </div>
-      </li>
+      </details>
       
-      <!-- 下向き矢印 -->
-      <div class="flow-arrow" style="text-align: center; margin: 1rem 0; font-size: 2rem; color: #2c2c2c;">
-        ↓
-      </div>
-      
-      <li class="flow-step">
-        <div class="step-number">2</div>
+      <details>
+        <summary>
+          <span class="step-number">2</span>
+          <span class="step-title">肌状態ヒアリング & 分析</span>
+        </summary>
         <div class="step-content">
-          <h2 class="step-title">肌状態ヒアリング & 分析</h2>
           <p class="step-description">専門カウンセラーがお客様の肌のお悩みや状態を丁寧にヒアリングし、専用の機器で詳しく分析します。</p>
         </div>
-      </li>
+      </details>
       
-      <!-- 下向き矢印 -->
-      <div class="flow-arrow" style="text-align: center; margin: 1rem 0; font-size: 2rem; color: #2c2c2c;">
-        ↓
-      </div>
-      
-      <li class="flow-step">
-        <div class="step-number">3</div>
+      <details>
+        <summary>
+          <span class="step-number">3</span>
+          <span class="step-title">施術プランのご提案</span>
+        </summary>
         <div class="step-content">
-          <h2 class="step-title">施術プランのご提案</h2>
           <p class="step-description">分析結果を元に、お客様の肌に最も合ったオーダーメイドの施術プランを分かりやすくご提案いたします。</p>
         </div>
-      </li>
+      </details>
       
-      <!-- 下向き矢印 -->
-      <div class="flow-arrow" style="text-align: center; margin: 1rem 0; font-size: 2rem; color: #2c2c2c;">
-        ↓
-      </div>
-      
-      <li class="flow-step">
-        <div class="step-number">4</div>
+      <details>
+        <summary>
+          <span class="step-number">4</span>
+          <span class="step-title">オーダーメイド施術</span>
+        </summary>
         <div class="step-content">
-          <h2 class="step-title">オーダーメイド施術</h2>
           <p class="step-description">ご納得いただいたプランに沿って、経験豊富なエステティシャンが心を込めて丁寧に施術を行います。</p>
         </div>
-      </li>
+      </details>
       
-      <!-- 下向き矢印 -->
-      <div class="flow-arrow" style="text-align: center; margin: 1rem 0; font-size: 2rem; color: #2c2c2c;">
-        ↓
-      </div>
-      
-      <li class="flow-step">
-        <div class="step-number">5</div>
+      <details>
+        <summary>
+          <span class="step-number">5</span>
+          <span class="step-title">アフターケア & ホームケア共有</span>
+        </summary>
         <div class="step-content">
-          <h2 class="step-title">アフターケア & ホームケア共有</h2>
           <p class="step-description">施術後の効果を長持ちさせるためのアフターケアや、ご自宅での最適なケア方法をアドバイスします。</p>
         </div>
-      </li>
-    </ul>
+      </details>
+    </div>
   </div>
+  
+  <style>
+  /* 初回来店の流れ - トグル形式 */
+  .flow-toggle {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .flow-toggle details {
+    background: #fafafa;
+    margin-bottom: 1rem;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  
+  .flow-toggle details:hover {
+    border-color: #2c2c2c;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  .flow-toggle details[open] {
+    background: #fff;
+    border-color: #2c2c2c;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  
+  .flow-toggle summary {
+    padding: 1.5rem;
+    cursor: pointer;
+    font-weight: 600;
+    color: #2c2c2c;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    user-select: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .flow-toggle summary:hover {
+    background: #f0f0f0;
+  }
+  
+  .flow-toggle details[open] summary {
+    background: #f8f8f8;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .flow-toggle .step-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: #2c2c2c;
+    color: white;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  
+  .flow-toggle .step-title {
+    font-size: 1.1rem;
+    flex: 1;
+  }
+  
+  .flow-toggle .step-content {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+  }
+  
+  .flow-toggle .step-description {
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+    font-size: 0.95rem;
+  }
+  
+  /* モバイル対応 */
+  @media (max-width: 768px) {
+    .flow-toggle {
+      margin: 0 1rem;
+    }
+    
+    .flow-toggle summary {
+      padding: 1.2rem;
+      gap: 0.8rem;
+    }
+    
+    .flow-toggle .step-number {
+      width: 35px;
+      height: 35px;
+      font-size: 1rem;
+    }
+    
+    .flow-toggle .step-title {
+      font-size: 1rem;
+    }
+    
+    .flow-toggle .step-content {
+      padding: 0 1.2rem 1.2rem 1.2rem;
+    }
+  }
+  </style>
 </section>
 
 <!-- ========== メニューモーダル ========== -->
