@@ -1,110 +1,29 @@
-// Replace with your actual LINE friend URL via GitHub secret injection if desired
+// 公式 LINE URL
 const LINE_URL = 'https://line.me/R/ti/p/@086bqzuj';
 
+// Instagramフィード取得
 async function loadInstagram() {
-  console.log('=== Instagram Loading Started ===');
-  
-  // 即座にダミー画像を表示（デバッグ用）
-  const container = document.getElementById('instagram-posts');
-  if (container) {
-    container.style.display = 'flex';
-    console.log('Instagram container found and made visible');
-  } else {
-    console.error('Instagram container not found!');
-    return;
-  }
-  
   try {
-    console.log('Fetching posts.json...');
     const res = await fetch('posts.json');
-    
-    if (!res.ok) {
-      throw new Error(`HTTP error! status: ${res.status}`);
-    }
-    
+    if (!res.ok) throw new Error('fetch failed');
     const data = await res.json();
-    console.log('Instagram data loaded successfully:', data);
-    
-    if (!Array.isArray(data) || data.length === 0) {
-      throw new Error('No posts found in data');
-    }
-    
-    // 既存のギャラリー表示
     renderGallery(data);
-    
-    // 新しいInstagramセクション表示
-    renderInstagramPosts(data);
-    
-  } catch (e) {
-    console.error('Failed to load Instagram posts:', e);
-    
-    // エラー時はダミー画像で表示テスト
-    showDummyInstagramPosts();
+  } catch (err) {
+    console.error('Instagram fetch error – fallback to dummy', err);
+    const dummy = Array.from({ length: 6 }).map((_, i) => ({
+      permalink: 'https://www.instagram.com/bloom_estheticsalon',
+      media_url: `https://picsum.photos/seed/ig${i}/400/400`,
+      media_type: 'IMAGE'
+    }));
+    renderGallery(dummy);
   }
-}
-
-// ダミー投稿表示（デバッグ用）
-function showDummyInstagramPosts() {
-  console.log('Showing dummy Instagram posts for testing...');
-  
-  const container = document.getElementById('instagram-posts');
-  if (!container) return;
-  
-  container.innerHTML = '';
-  container.style.display = 'flex';
-  
-  // ダミー画像を6個作成
-  for (let i = 1; i <= 6; i++) {
-    const imgElement = document.createElement('div');
-    imgElement.style.cssText = `
-      width: 32%;
-      max-width: 110px;
-      aspect-ratio: 1/1;
-      background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045);
-      border-radius: 8px;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: bold;
-      font-size: 0.8rem;
-      text-align: center;
-    `;
-    
-    imgElement.textContent = `投稿 ${i}`;
-    
-    // PC表示用のスタイル調整
-    if (window.innerWidth >= 640) {
-      imgElement.style.width = '23%';
-      imgElement.style.maxWidth = '140px';
-    }
-    
-    // クリックでInstagramに遷移
-    imgElement.addEventListener('click', () => {
-      window.open('https://www.instagram.com/bloom_estheticsalon/', '_blank', 'noopener,noreferrer');
-    });
-    
-    // ホバーエフェクト
-    imgElement.addEventListener('mouseenter', () => {
-      imgElement.style.transform = 'scale(1.05)';
-    });
-    
-    imgElement.addEventListener('mouseleave', () => {
-      imgElement.style.transform = 'scale(1)';
-    });
-    
-    container.appendChild(imgElement);
-  }
-  
-  console.log('Dummy Instagram posts displayed');
 }
 
 function renderGallery(posts) {
   const grid = document.getElementById('insta-grid');
-  if (!Array.isArray(posts)) return;
-  posts.slice(0, 18).forEach((post) => {
+  if (!grid || !Array.isArray(posts)) return;
+
+  posts.slice(0, 12).forEach(post => {
     const a = document.createElement('a');
     a.href = post.permalink;
     a.target = '_blank';
@@ -113,7 +32,8 @@ function renderGallery(posts) {
 
     const img = document.createElement('img');
     img.src = post.media_url;
-    img.alt = post.caption?.substring(0, 100) || 'Instagram image';
+    img.alt = post.caption?.slice(0, 100) || 'Instagram image';
+    img.onerror = () => a.remove();
     a.appendChild(img);
 
     if (post.media_type === 'VIDEO' || post.media_type === 'REEL') {
@@ -122,10 +42,15 @@ function renderGallery(posts) {
       play.textContent = '▶';
       a.appendChild(play);
     }
+
     grid.appendChild(a);
   });
+  
+  // Instagram section 用のレンダリングも呼び出し
+  renderInstagramPosts(posts);
 }
 
+// Instagram section用レンダリング関数
 function renderInstagramPosts(posts) {
   console.log('renderInstagramPosts called with:', posts);
   
@@ -209,13 +134,70 @@ function renderInstagramPosts(posts) {
   console.log(`Instagram posts rendered: ${posts.length} posts found, ${Math.min(posts.length, 9)} displayed`);
 }
 
+// ダミー投稿表示（デバッグ用）
+function showDummyInstagramPosts() {
+  console.log('Showing dummy Instagram posts for testing...');
+  
+  const container = document.getElementById('instagram-posts');
+  if (!container) return;
+  
+  container.innerHTML = '';
+  container.style.display = 'flex';
+  
+  // ダミー画像を6個作成
+  for (let i = 1; i <= 6; i++) {
+    const imgElement = document.createElement('div');
+    imgElement.style.cssText = `
+      width: 32%;
+      max-width: 110px;
+      aspect-ratio: 1/1;
+      background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 0.8rem;
+      text-align: center;
+    `;
+    
+    imgElement.textContent = `投稿 ${i}`;
+    
+    // PC表示用のスタイル調整
+    if (window.innerWidth >= 640) {
+      imgElement.style.width = '23%';
+      imgElement.style.maxWidth = '140px';
+    }
+    
+    // クリックでInstagramに遷移
+    imgElement.addEventListener('click', () => {
+      window.open('https://www.instagram.com/bloom_estheticsalon/', '_blank', 'noopener,noreferrer');
+    });
+    
+    // ホバーエフェクト
+    imgElement.addEventListener('mouseenter', () => {
+      imgElement.style.transform = 'scale(1.05)';
+    });
+    
+    imgElement.addEventListener('mouseleave', () => {
+      imgElement.style.transform = 'scale(1)';
+    });
+    
+    container.appendChild(imgElement);
+  }
+  
+  console.log('Dummy Instagram posts displayed');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   console.log('DOM loaded, starting initialization...');
   
   // LINE URLの設定
-  document.querySelectorAll('#line-link, #line-link-2, #nav-line-link, #footer-line-link').forEach((el) => {
-    el.href = LINE_URL;
-  });
+  document.querySelectorAll('#line-link, #line-link-2, #nav-line-link, #footer-line-link')
+    .forEach(el => (el.href = LINE_URL));
   
   // Instagram投稿の読み込み
   loadInstagram();
@@ -237,18 +219,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const navToggle = document.querySelector('.nav-toggle');
   const navLinks = document.querySelector('.nav-links');
   
-  navToggle.addEventListener('click', () => {
-    navToggle.classList.toggle('active');
-    navLinks.classList.toggle('active');
-  });
-  
-  // メニューリンクをクリックしたときメニューを閉じる
-  document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-      navToggle.classList.remove('active');
-      navLinks.classList.remove('active');
+  if (navToggle && navLinks) {
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('active');
+      navLinks.classList.toggle('active');
     });
-  });
+    
+    // メニューリンクをクリックしたときメニューを閉じる
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', () => {
+        navToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+      });
+    });
+  }
   
   // ロゴクリックでホームに戻る
   const logoLink = document.querySelector('.nav-logo-link');
@@ -260,8 +244,10 @@ document.addEventListener('DOMContentLoaded', () => {
         behavior: 'smooth'
       });
       // モバイルメニューが開いていれば閉じる
-      navToggle.classList.remove('active');
-      navLinks.classList.remove('active');
+      if (navToggle && navLinks) {
+        navToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+      }
     });
   }
   
