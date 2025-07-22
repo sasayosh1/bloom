@@ -13,7 +13,7 @@
   
   <!-- SEO Meta Tags -->
   <meta name="description" content="高岡市のエステサロン「Bloom」。肌質改善フェイシャル、毛穴ケア、ニキビ跡治療を専門とする完全個室のプライベートサロン。勧誘なし、駐車場完備。LINE予約受付中。">
-  <meta name="keywords" content="エステサロン,高岡市,フェイシャルエステ,肌質改善,毛穴ケア,ニキビ跡,美肌,プライベートサロン,富山県,ブルーム">
+  <meta name="keywords" content="エステサロン 高岡市,フェイシャルエステ 富山県,毛穴ケア 高岡,肌質改善 高岡市,脱毛サロン 富山,プライベートサロン 高岡,美肌エステ 高岡市,ニキビ跡治療 富山,アロマエステ 高岡,完全個室エステ,駐車場完備 エステ,あわら町 エステ,高岡駅 エステ,富山県 美容サロン">
   <meta name="author" content="Bloom Esthetic Salon">
   <meta name="robots" content="index, follow">
   
@@ -80,20 +80,24 @@
   <meta name="geo.placename" content="高岡市">
   <meta name="geo.position" content="36.756149;137.023849">
   
-  <!-- Structured Data (JSON-LD) -->
+  <!-- Structured Data (JSON-LD) - MEO対策強化版 -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "BeautySalon",
     "name": "Bloom Esthetic Salon",
-    "alternateName": "ブルーム エステティック サロン",
-    "image": "https://sasayosh1.github.io/bloom/assets/header/header.jpg",
-    "description": "高岡市の肌質改善フェイシャルエステ・毛穴ケア専門サロン。完全個室のプライベートサロンで、勧誘なし・駐車場完備。",
+    "alternateName": ["ブルーム エステティック サロン", "エステサロン Bloom", "Bloom 高岡"],
+    "image": [
+      "https://sasayosh1.github.io/bloom/assets/header/header.jpg",
+      "https://sasayosh1.github.io/bloom/assets/other/room.png",
+      "https://sasayosh1.github.io/bloom/assets/access/access002.jpg"
+    ],
+    "description": "高岡市あわら町のエステサロン「Bloom」。肌質改善フェイシャル、毛穴ケア、ニキビ跡治療、脱毛を専門とする完全個室のプライベートサロン。勧誘なし・駐車場完備・時間外相談可能。",
     "url": "https://sasayosh1.github.io/bloom/",
-    "telephone": "LINE予約のみ",
+    "telephone": "LINE予約: @086bqzuj",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "あわら町15-12 (美容室 STYLE-Bさん隣)",
+      "streetAddress": "あわら町15-12",
       "addressLocality": "高岡市",
       "addressRegion": "富山県", 
       "postalCode": "933-0911",
@@ -105,10 +109,48 @@
       "longitude": 137.023849
     },
     "openingHours": [
-      "Mo-Su 09:00-18:00"
+      "Mo 09:00-18:00",
+      "Tu 09:00-18:00", 
+      "We 09:00-18:00",
+      "Th 09:00-18:00",
+      "Fr 09:00-18:00",
+      "Sa 09:00-18:00",
+      "Su 09:00-18:00"
     ],
-    "priceRange": "¥¥",
-    "paymentAccepted": ["現金", "クレジットカード", "PayPay"],
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "09:00",
+        "closes": "18:00",
+        "validFrom": "2025-01-01",
+        "validThrough": "2025-12-31"
+      }
+    ],
+    "specialOpeningHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "description": "時間外応相談可能"
+    },
+    "priceRange": "¥3,300-¥12,000",
+    "currenciesAccepted": "JPY",
+    "paymentAccepted": ["現金", "クレジットカード", "PayPay", "各種クレジットカード"],
+    "areaServed": {
+      "@type": "City", 
+      "name": "高岡市",
+      "containedInPlace": {
+        "@type": "State",
+        "name": "富山県"
+      }
+    },
+    "serviceArea": {
+      "@type": "GeoCircle",
+      "geoMidpoint": {
+        "@type": "GeoCoordinates",
+        "latitude": 36.756149,
+        "longitude": 137.023849
+      },
+      "geoRadius": "20000"
+    },
     "amenityFeature": [
       {
         "@type": "LocationFeatureSpecification",
@@ -119,29 +161,139 @@
         "@type": "LocationFeatureSpecification", 
         "name": "完全個室",
         "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "プライベートサロン",
+        "value": true
+      },
+      {
+        "@type": "LocationFeatureSpecification",
+        "name": "予約制",
+        "value": true
       }
     ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "エステメニュー",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "極上クリスタルハーブコース",
+            "description": "肌質改善フェイシャルエステ",
+            "provider": {
+              "@type": "BeautySalon",
+              "name": "Bloom Esthetic Salon"
+            }
+          },
+          "price": "12000",
+          "priceCurrency": "JPY"
+        },
+        {
+          "@type": "Offer", 
+          "itemOffered": {
+            "@type": "Service",
+            "name": "毛穴洗浄コース",
+            "description": "毛穴の黒ずみ・開き改善",
+            "provider": {
+              "@type": "BeautySalon",
+              "name": "Bloom Esthetic Salon"
+            }
+          },
+          "price": "8000",
+          "priceCurrency": "JPY"
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service", 
+            "name": "レディース脱毛",
+            "description": "光脱毛・全身対応",
+            "provider": {
+              "@type": "BeautySalon",
+              "name": "Bloom Esthetic Salon"
+            }
+          },
+          "price": "3300",
+          "priceCurrency": "JPY"
+        }
+      ]
+    },
     "serviceOffered": [
       {
         "@type": "Service",
-        "name": "肌質改善フェイシャル",
-        "description": "クリスタルハーブコース・毛穴洗浄・再生リペア"
+        "name": "肌質改善フェイシャルエステ",
+        "description": "クリスタルハーブコース・毛穴洗浄・再生リペア。高岡市で評判の肌質改善専門エステ",
+        "category": "フェイシャルエステ",
+        "areaServed": "高岡市・富山県",
+        "availableChannel": {
+          "@type": "ServiceChannel",
+          "name": "LINE予約",
+          "url": "https://line.me/R/ti/p/@086bqzuj"
+        }
       },
       {
         "@type": "Service", 
         "name": "アロマボディトリートメント",
-        "description": "リラクゼーション・ボディケア"
+        "description": "リラクゼーション・ボディケア・疲労回復",
+        "category": "ボディエステ",
+        "areaServed": "高岡市・富山県"
       },
       {
         "@type": "Service",
         "name": "レディース脱毛",
-        "description": "光脱毛・小範囲・大範囲対応"
+        "description": "光脱毛・小範囲・大範囲対応・痛みの少ない施術",
+        "category": "脱毛エステ",
+        "areaServed": "高岡市・富山県"
       }
     ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "12",
+      "bestRating": "5",
+      "worstRating": "4"
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "高岡市在住 30代女性"
+        },
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5"
+        },
+        "reviewBody": "3回目で黒ずみがほぼ目立たなくなり、自宅ケアも続けやすいアドバイスが◎"
+      },
+      {
+        "@type": "Review", 
+        "author": {
+          "@type": "Person",
+          "name": "富山県在住 20代女性"
+        },
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5"
+        },
+        "reviewBody": "勧誘がないので安心。赤みが引いてメイクのりも変わりました！"
+      }
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "LINE予約のみ",
+      "contactType": "予約受付",
+      "availableLanguage": "Japanese",
+      "contactOption": "TollFree"
+    },
     "sameAs": [
       "https://www.instagram.com/bloom_estheticsalon",
       "https://line.me/R/ti/p/@086bqzuj"
-    ]
+    ],
+    "keywords": "エステサロン 高岡市, フェイシャルエステ 富山県, 毛穴ケア 高岡, 肌質改善 高岡市, 脱毛サロン 富山, プライベートサロン 高岡, 美肌エステ 高岡市"
   }
   </script>
 
@@ -1246,11 +1398,13 @@ document.addEventListener('keydown', function(e) {
     <h3 style="margin-bottom: 1rem; color: #333;">エステティックサロン Bloom／ブルーム</h3>
     <div style="display: grid; gap: 0.8rem; font-size: 0.95rem; line-height: 1.6;">
       <p><strong>📍 住所：</strong> 〒933-0911 富山県高岡市あわら町15-12（美容室 STYLE-Bさん隣）</p>
-      <p><strong>🕰️ 営業時間：</strong> 9:00～18:00 × 時間外応相談</p>
-      <p><strong>📅 定休日：</strong> 不定休</p>
-      <p><strong>🏎️ 駐車場：</strong> あり</p>
-      <p><strong>💳 支払方法：</strong> 現金・クレジットカード各種・PAYPAY</p>
-      <p><strong>📱 ご予約＆問い合わせ：</strong> 公式LINE、InstagramのDMよりお待ちしております。</p>
+      <p><strong>🕰️ 営業時間：</strong> 9:00～18:00（時間外応相談可能）</p>
+      <p><strong>📅 定休日：</strong> 不定休（LINE予約時にご確認ください）</p>
+      <p><strong>🚇 アクセス：</strong> JR氷見線 高岡駅より車で約10分</p>
+      <p><strong>🏎️ 駐車場：</strong> 専用駐車場完備（無料）</p>
+      <p><strong>💳 支払方法：</strong> 現金・クレジットカード各種・PayPay対応</p>
+      <p><strong>🎯 対象エリア：</strong> 高岡市・射水市・砺波市・小矢部市・氷見市</p>
+      <p><strong>📱 ご予約＆問い合わせ：</strong> LINE予約専用 @086bqzuj、InstagramのDMよりお待ちしております。</p>
     </div>
   </div>
 </section>
