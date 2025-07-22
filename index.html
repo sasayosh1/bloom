@@ -809,7 +809,7 @@ document.addEventListener('keydown', function(e) {
 </section>
 
 <!-- ========== FAQ ========== -->
-<section id="faq" style="background:#f9f9f9; padding:4rem 0;">
+<section id="faq" style="background:#f9f9f9; padding:2.5rem 0 4rem 0;">
   <div class="container">
     <h2>よくあるご質問</h2>
     <details>
@@ -837,11 +837,22 @@ document.addEventListener('keydown', function(e) {
       <p>体調に問題なければ可能ですが、お肌が敏感になりやすい時期です。</p>
     </details>
   </div>
+  
+  <style>
+  @media (max-width: 768px) {
+    #faq {
+      padding: 2rem 0 3rem 0 !important;
+    }
+    #access {
+      padding: 2.5rem 0 3rem 0 !important;
+    }
+  }
+  </style>
 </section>
 
 
 <!-- ========== アクセス ========== -->
-<section id="access" class="container" style="padding:4rem 0;">
+<section id="access" class="container" style="padding:3rem 0 4rem 0;">
   <h2>アクセス</h2>
   <div class="map">
     <iframe src="https://maps.google.com/?q=富山県高岡市あわら町15-12&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
