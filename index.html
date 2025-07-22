@@ -35,6 +35,34 @@
   <!-- Canonical URL -->
   <link rel="canonical" href="https://sasayosh1.github.io/bloom/">
   
+  <!-- Google Analytics 4 (GA4) -->
+  <!-- TODO: GA4測定IDを実際のIDに置き換えてください: G-XXXXXXXXXX -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX', {
+      // コンバージョン強化測定を有効化
+      enhanced_conversions: true,
+      // ページビュー自動送信
+      send_page_view: true,
+      // デバッグモード（本番では false に設定）
+      debug_mode: false,
+      // カスタムパラメータ
+      custom_map: {
+        'custom_parameter_1': 'salon_location',
+        'custom_parameter_2': 'service_type'
+      }
+    });
+    
+    // サロン固有の情報を設定
+    gtag('config', 'G-XXXXXXXXXX', {
+      salon_location: '高岡市',
+      business_type: 'エステサロン'
+    });
+  </script>
+  
   <!-- Local Business Schema Preview (will be added in body) -->
   <meta name="geo.region" content="JP-16">
   <meta name="geo.placename" content="高岡市">
@@ -1260,6 +1288,10 @@ document.addEventListener('keydown', function(e) {
     </div>
     <div class="footer-bottom">
       <p>&copy; 2025 Bloom Esthetic Salon. All rights reserved.</p>
+      <p style="font-size: 0.8rem; color: #999; margin-top: 0.5rem;">
+        当サイトではGoogle Analyticsを使用してアクセス解析を行っております。詳しくは
+        <a href="#" onclick="showPrivacyPolicy()" style="color: #ccc; text-decoration: underline;">プライバシーポリシー</a>をご確認ください。
+      </p>
     </div>
   </div>
 </footer>
@@ -1286,6 +1318,138 @@ document.addEventListener('keydown', function(e) {
     const menu = document.querySelector('.nav-menu');
     menu.classList.toggle('active');
   }
+  
+  /* プライバシーポリシーモーダル */
+  function showPrivacyPolicy() {
+    const modal = document.createElement('div');
+    modal.style.cssText = `
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+      background: rgba(0,0,0,0.8); z-index: 2000; 
+      display: flex; align-items: center; justify-content: center;
+      padding: 1rem;
+    `;
+    
+    modal.innerHTML = `
+      <div style="background: white; padding: 2rem; border-radius: 12px; max-width: 600px; max-height: 80vh; overflow-y: auto;">
+        <h3 style="margin-bottom: 1rem; color: #2c2c2c;">プライバシーポリシー</h3>
+        <div style="font-size: 0.9rem; line-height: 1.6; color: #555;">
+          <h4>Google Analyticsの使用について</h4>
+          <p>当サイトでは、サイトの利用状況を把握するためGoogle Analytics を利用しています。Google Analytics はCookieを使用してユーザーの行動に関する情報を収集します。</p>
+          
+          <h4>収集する情報</h4>
+          <ul style="margin-left: 1.5rem;">
+            <li>ページビュー数</li>
+            <li>滞在時間</li>
+            <li>参照元サイト</li>
+            <li>使用デバイス・ブラウザ情報</li>
+          </ul>
+          
+          <h4>情報の利用目的</h4>
+          <p>収集した情報は、サイトの改善・サービス向上のためにのみ使用いたします。個人を特定する情報は含まれません。</p>
+          
+          <h4>お問い合わせ</h4>
+          <p>プライバシーに関するご質問は、LINEよりお気軽にお問い合わせください。</p>
+        </div>
+        <button onclick="closePrivacyPolicy()" style="margin-top: 1.5rem; padding: 0.5rem 1.5rem; background: #2c2c2c; color: white; border: none; border-radius: 6px; cursor: pointer;">閉じる</button>
+      </div>
+    `;
+    
+    modal.onclick = function(e) {
+      if (e.target === modal) closePrivacyPolicy();
+    };
+    
+    document.body.appendChild(modal);
+    window.currentModal = modal;
+  }
+  
+  function closePrivacyPolicy() {
+    if (window.currentModal) {
+      document.body.removeChild(window.currentModal);
+      window.currentModal = null;
+    }
+  }
+  
+  /* GA4 コンバージョン追跡 */
+  document.addEventListener('DOMContentLoaded', function() {
+    // LINE予約クリック追跡
+    document.querySelectorAll('a[href*="line.me"]').forEach(function(link) {
+      link.addEventListener('click', function() {
+        // GA4イベント送信
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'line_reservation_click', {
+            event_category: 'conversion',
+            event_label: 'LINE予約ボタン',
+            value: 1,
+            salon_location: '高岡市',
+            conversion_type: 'line_click'
+          });
+        }
+      });
+    });
+    
+    // Instagram遷移クリック追跡  
+    document.querySelectorAll('a[href*="instagram.com"]').forEach(function(link) {
+      link.addEventListener('click', function() {
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'instagram_click', {
+            event_category: 'social',
+            event_label: 'Instagram遷移',
+            salon_location: '高岡市'
+          });
+        }
+      });
+    });
+    
+    // メニューボタンクリック追跡
+    document.querySelectorAll('[onclick="openMenuModal()"]').forEach(function(button) {
+      button.addEventListener('click', function() {
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'menu_modal_open', {
+            event_category: 'engagement',
+            event_label: 'メニュー詳細表示',
+            salon_location: '高岡市'
+          });
+        }
+      });
+    });
+    
+    // スクロール深度追跡
+    let scrollDepthSent = false;
+    window.addEventListener('scroll', function() {
+      const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+      
+      if (scrollPercent >= 75 && !scrollDepthSent) {
+        scrollDepthSent = true;
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'scroll_depth_75', {
+            event_category: 'engagement',
+            event_label: 'スクロール75%到達',
+            value: 75
+          });
+        }
+      }
+    });
+    
+    // お客様の声セクション表示追跡
+    const voicesSection = document.querySelector('#voices');
+    if (voicesSection) {
+      const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            if (typeof gtag !== 'undefined') {
+              gtag('event', 'testimonials_view', {
+                event_category: 'engagement',
+                event_label: 'お客様の声セクション表示',
+                salon_location: '高岡市'
+              });
+            }
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      observer.observe(voicesSection);
+    }
+  });
   
   /* お客様の声 - スクロールドット機能 */
   document.addEventListener('DOMContentLoaded', function() {
