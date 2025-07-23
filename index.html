@@ -714,7 +714,7 @@
 <!-- ========== お客様の声 ========== -->
 <section id="voices" class="container" style="padding:4rem 0;">
   <h2>お客様の声</h2>
-  <div style="text-align: center; margin-bottom: 1.5rem;">
+  <div class="swipe-hint" style="text-align: center; margin-bottom: 1.5rem;">
     <p style="color: #666; font-size: 0.9rem; margin: 0;">
       📱 横にスワイプして他の声もご覧ください
     </p>
@@ -848,17 +848,30 @@
     }
   }
   
-  /* PC表示では通常のグリッド */
+  /* PC表示では3+2グリッドレイアウト */
   @media (min-width: 769px) {
     .voice-slider {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto;
       overflow: visible;
       gap: 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
     }
     
     .voice {
       min-width: auto;
+      width: 100%;
+    }
+    
+    /* 4番目と5番目の要素を2列目に配置 */
+    .voice:nth-child(4) {
+      grid-column: 1 / 2;
+    }
+    
+    .voice:nth-child(5) {
+      grid-column: 3 / 4;
     }
     
     .scroll-indicator {
@@ -867,6 +880,11 @@
     
     .voice-slider-container::before,
     .voice-slider-container::after {
+      display: none;
+    }
+    
+    /* スワイプ案内を非表示 */
+    #voices .swipe-hint {
       display: none;
     }
   }
