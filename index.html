@@ -720,16 +720,24 @@
         <p>40代 / しみ・たるみ</p>
         <p>回数券を自分のペースで使えるのが嬉しい。肌がワントーン明るく。</p>
       </div>
-      <div class="voice">
+      <div class="voice" data-index="4">
         <div class="stars">★★★★★</div>
         <p>50代 / エイジングケア</p>
         <p>丁寧なカウンセリングで安心。肌のハリが戻って若返った気分です！</p>
       </div>
-      <div class="voice">
+      <div class="voice" data-index="5">
         <div class="stars">★★★★★</div>
         <p>40代 / 乾燥肌</p>
         <p>保湿力が格段にアップ。季節の変わり目も肌トラブルなしです。</p>
       </div>
+  </div>
+  
+  <!-- モバイル用「もっと見る」ボタン -->
+  <div class="show-more-container">
+    <button class="show-more-btn" onclick="toggleVoices()">
+      <span class="btn-text">もっと見る</span>
+      <span class="btn-icon">▼</span>
+    </button>
   </div>
   
   <style>
@@ -814,6 +822,59 @@
   @media (max-width: 768px) {
     .voice {
       padding: 1.2rem;
+    }
+    
+    /* モバイルで4番目と5番目を初期非表示 */
+    .voice[data-index="4"],
+    .voice[data-index="5"] {
+      display: none;
+    }
+    
+    .voice[data-index="4"].show,
+    .voice[data-index="5"].show {
+      display: flex;
+    }
+  }
+  
+  /* もっと見るボタンのスタイル */
+  .show-more-container {
+    text-align: center;
+    margin-top: 2rem;
+  }
+  
+  .show-more-btn {
+    background: linear-gradient(135deg, #2c2c2c, #444);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  
+  .show-more-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  }
+  
+  .btn-icon {
+    transition: transform 0.3s ease;
+  }
+  
+  .show-more-btn.expanded .btn-icon {
+    transform: rotate(180deg);
+  }
+  
+  /* PC表示では「もっと見る」ボタンを非表示 */
+  @media (min-width: 769px) {
+    .show-more-container {
+      display: none;
     }
   }
   </style>
@@ -1688,6 +1749,26 @@ document.addEventListener('keydown', function(e) {
       observer.observe(voicesSection);
     }
   });
+  
+  /* お客様の声 - もっと見る機能 */
+  function toggleVoices() {
+    const hiddenVoices = document.querySelectorAll('.voice[data-index="4"], .voice[data-index="5"]');
+    const button = document.querySelector('.show-more-btn');
+    const btnText = button.querySelector('.btn-text');
+    const isExpanded = button.classList.contains('expanded');
+    
+    if (isExpanded) {
+      // 隠す
+      hiddenVoices.forEach(voice => voice.classList.remove('show'));
+      button.classList.remove('expanded');
+      btnText.textContent = 'もっと見る';
+    } else {
+      // 表示する
+      hiddenVoices.forEach(voice => voice.classList.add('show'));
+      button.classList.add('expanded');
+      btnText.textContent = '閉じる';
+    }
+  }
   
 </script>
 
