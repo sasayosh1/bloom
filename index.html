@@ -336,9 +336,57 @@
     .btn-secondary:hover{ background:#f8f8f8; }
 
     /* ---------- 選ばれる理由 ---------- */
-    #reasons .cards{ display:grid; gap:1.5rem; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); margin-top:2rem;}
-    #reasons .card{ background:#fff; border-radius:12px; padding:1.5rem; box-shadow:0 4px 12px rgba(0,0,0,.06); text-align:center;}
-    #reasons .card img{ width:64px; margin-inline:auto 1rem;}
+    #reasons .cards{ 
+      display:grid; 
+      gap:1.5rem; 
+      grid-template-columns: 1fr 1fr; 
+      margin-top:2rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    #reasons .card{ 
+      background:#fff; 
+      border-radius:12px; 
+      padding:1.5rem; 
+      box-shadow:0 4px 12px rgba(0,0,0,.06); 
+      text-align:center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    #reasons .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,.12);
+    }
+    #reasons .card img{ 
+      width:100%; 
+      height: 150px; 
+      object-fit: cover; 
+      border-radius: 8px; 
+      margin-bottom: 1rem;
+    }
+    
+    /* スマホ対応 */
+    @media (max-width: 768px) {
+      #reasons .cards {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        max-width: 100%;
+      }
+      #reasons .card {
+        padding: 1.2rem;
+      }
+      #reasons .card img {
+        height: 120px;
+      }
+    }
+    
+    /* タブレット対応 */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      #reasons .cards {
+        max-width: 100%;
+        gap: 1.2rem;
+      }
+    }
 
     /* ---------- 悩み別入口 ---------- */
     #concerns .concern-grid{ display:grid; gap:1rem; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); }
@@ -556,22 +604,22 @@
   
   <div class="cards">
     <div class="card">
-      <img src="assets/aroma/aroma004.jpg" alt="高岡市エステサロンBloomの肌分析機器による肌質改善カウンセリング" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
+      <img src="assets/aroma/aroma004.jpg" alt="高岡市エステサロンBloomの肌分析機器による肌質改善カウンセリング">
       <h3>肌分析 × オーダー施術</h3>
       <p>専用スキャナで状態を測定し、当日調合するカスタム処方。</p>
     </div>
     <div class="card">
-      <img src="assets/aroma/aroma005.jpg" alt="Bloomエステサロンの再発防止アフターケア指導" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
+      <img src="assets/aroma/aroma005.jpg" alt="Bloomエステサロンの再発防止アフターケア指導">
       <h3>再発防止アフターケア</h3>
       <p>ホームケア表をLINEで共有。肌を"育てる"習慣化をサポート。</p>
     </div>
     <div class="card">
-      <img src="assets/access/access002.jpg" alt="高岡市エステサロンBloomの完全個室プライベート空間" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
+      <img src="assets/access/access002.jpg" alt="高岡市エステサロンBloomの完全個室プライベート空間">
       <h3>勧誘ゼロ宣言</h3>
       <p>都度払い・回数券自由選択。押し売りは一切ありません。</p>
     </div>
     <div class="card">
-      <img src="assets/other/room.png" alt="Bloomエステサロンの癒しのプライベート施術ルーム" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 1rem;">
+      <img src="assets/other/room.png" alt="Bloomエステサロンの癒しのプライベート施術ルーム">
       <h3>癒しのプライベート空間</h3>
       <p>日常を忘れる静かな個室で、心身ともにリフレッシュできる時間。</p>
     </div>
