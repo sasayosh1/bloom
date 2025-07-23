@@ -456,16 +456,6 @@
     .case::after{ content:"BEFORE / AFTER"; position:absolute; bottom:.5rem; left:50%; transform:translateX(-50%); background:rgba(0,0,0,.55); color:#fff; padding:.15rem .5rem; font-size:.8rem; border-radius:6px; }
 
     /* ---------- お客様の声 ---------- */
-    #voices .voice-slider{ display:flex; overflow-x:auto; gap:1rem; scroll-snap-type:x mandatory; max-width: 100%; }
-    .voice{ min-width:260px; scroll-snap-align:start; background:#fff; border-radius:10px; padding:1rem; box-shadow:0 4px 12px rgba(0,0,0,.05); flex-shrink: 0; }
-    
-    /* 横スクロール要素の制御を強化 */
-    .voice-slider { 
-      -webkit-overflow-scrolling: touch; 
-      scrollbar-width: none;
-      -ms-overflow-style: none;
-    }
-    .voice-slider::-webkit-scrollbar { display: none; }
     .stars{ color:#ffc107; }
 
     /* ---------- 初回来店の流れ ---------- */
@@ -714,14 +704,7 @@
 <!-- ========== お客様の声 ========== -->
 <section id="voices" class="container" style="padding:4rem 0;">
   <h2>お客様の声</h2>
-  <div class="swipe-hint" style="text-align: center; margin-bottom: 1.5rem;">
-    <p style="color: #666; font-size: 0.9rem; margin: 0;">
-      📱 横にスワイプして他の声もご覧ください
-    </p>
-  </div>
-  
-  <div class="voice-slider-container">
-    <div class="voice-slider">
+  <div class="voices-grid">
       <div class="voice">
         <div class="stars">★★★★★</div>
         <p>30代 / 毛穴</p>
@@ -747,145 +730,60 @@
         <p>40代 / 乾燥肌</p>
         <p>保湿力が格段にアップ。季節の変わり目も肌トラブルなしです。</p>
       </div>
-    </div>
-    
-    <!-- スクロールインジケーター -->
-    <div class="scroll-indicator">
-      <div class="scroll-dots">
-        <span class="dot active"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-        <span class="dot"></span>
-      </div>
-    </div>
   </div>
   
   <style>
-  /* お客様の声 - 改善版 */
-  .voice-slider-container {
-    position: relative;
+  /* お客様の声 - グリッドレイアウト */
+  .voices-grid {
+    display: grid;
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
   }
   
-  .voice-slider {
-    display: flex;
-    overflow-x: auto;
-    gap: 1rem;
-    scroll-snap-type: x mandatory;
-    max-width: 100%;
-    padding: 0 0.5rem;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-  
-  .voice-slider::-webkit-scrollbar {
-    display: none;
-  }
-  
-  .voice {
-    min-width: 280px;
-    scroll-snap-align: start;
-    background: #fff;
-    border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    flex-shrink: 0;
-  }
-  
-  
-  .scroll-indicator {
-    display: flex;
-    justify-content: center;
-    margin-top: 1.5rem;
-  }
-  
-  .scroll-dots {
-    display: flex;
-    gap: 0.5rem;
-  }
-  
-  .dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #ddd;
-    transition: background-color 0.3s ease;
-    cursor: pointer;
-  }
-  
-  .dot.active {
-    background: #2c2c2c;
-  }
-  
-  /* モバイル専用の改善 */
-  @media (max-width: 768px) {
-    .voice {
-      min-width: 260px;
-      padding: 1.2rem;
-    }
-    
-    /* 左右のグラデーション表示 */
-    .voice-slider-container::before,
-    .voice-slider-container::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 40px;
-      width: 20px;
-      pointer-events: none;
-      z-index: 1;
-    }
-    
-    .voice-slider-container::before {
-      left: 0;
-      background: linear-gradient(to right, rgba(255,255,255,0.8), transparent);
-    }
-    
-    .voice-slider-container::after {
-      right: 0;
-      background: linear-gradient(to left, rgba(255,255,255,0.8), transparent);
-    }
-  }
-  
-  /* PC表示では3+2グリッドレイアウト */
+  /* PC: 上に3つ、下に2つ */
   @media (min-width: 769px) {
-    .voice-slider {
-      display: grid;
+    .voices-grid {
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: auto auto;
-      overflow: visible;
-      gap: 1.5rem;
-      max-width: 1000px;
-      margin: 0 auto;
     }
     
-    .voice {
-      min-width: auto;
-      width: 100%;
-    }
-    
-    /* 4番目と5番目の要素を2列目に配置 */
+    /* 4番目と5番目の要素を2列目に配置し、中央に寄せる */
     .voice:nth-child(4) {
       grid-column: 1 / 2;
+      grid-row: 2;
     }
     
     .voice:nth-child(5) {
       grid-column: 3 / 4;
+      grid-row: 2;
     }
-    
-    .scroll-indicator {
-      display: none;
+  }
+  
+  /* タブレット: 2列 */
+  @media (min-width: 481px) and (max-width: 768px) {
+    .voices-grid {
+      grid-template-columns: repeat(2, 1fr);
     }
-    
-    .voice-slider-container::before,
-    .voice-slider-container::after {
-      display: none;
+  }
+  
+  /* モバイル: 1列 */
+  @media (max-width: 480px) {
+    .voices-grid {
+      grid-template-columns: 1fr;
     }
-    
-    /* スワイプ案内を非表示 */
-    #voices .swipe-hint {
-      display: none;
+  }
+  
+  .voice {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+  
+  @media (max-width: 768px) {
+    .voice {
+      padding: 1.2rem;
     }
   }
   </style>
@@ -1761,71 +1659,6 @@ document.addEventListener('keydown', function(e) {
     }
   });
   
-  /* お客様の声 - スクロールドット機能 */
-  document.addEventListener('DOMContentLoaded', function() {
-    const voiceSlider = document.querySelector('.voice-slider');
-    const dots = document.querySelectorAll('.dot');
-    const voices = document.querySelectorAll('.voice');
-    
-    if (!voiceSlider || !dots.length || !voices.length) return;
-    
-    // ドットクリック時のスクロール
-    dots.forEach((dot, index) => {
-      dot.addEventListener('click', () => {
-        const targetVoice = voices[index];
-        if (targetVoice) {
-          targetVoice.scrollIntoView({
-            behavior: 'smooth',
-            block: 'nearest',
-            inline: 'start'
-          });
-          updateActiveDot(index);
-        }
-      });
-    });
-    
-    // スクロール時のドット更新 - 即座に反応
-    voiceSlider.addEventListener('scroll', () => {
-      updateActiveBasedOnScroll();
-    }, { passive: true });
-    
-    // Intersection Observer でより正確な検出
-    const observerOptions = {
-      root: voiceSlider,
-      rootMargin: '0px',
-      threshold: 0.6
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const index = Array.from(voices).indexOf(entry.target);
-          if (index >= 0) {
-            updateActiveDot(index);
-          }
-        }
-      });
-    }, observerOptions);
-    
-    voices.forEach(voice => observer.observe(voice));
-    
-    function updateActiveDot(activeIndex) {
-      dots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === activeIndex);
-      });
-    }
-    
-    function updateActiveBasedOnScroll() {
-      const scrollLeft = voiceSlider.scrollLeft;
-      const voiceWidth = voices[0].offsetWidth + 16;
-      const currentIndex = Math.round(scrollLeft / voiceWidth);
-      const clampedIndex = Math.max(0, Math.min(currentIndex, voices.length - 1));
-      updateActiveDot(clampedIndex);
-    }
-    
-    // 初期状態のドット設定
-    updateActiveDot(0);
-  });
 </script>
 
 
