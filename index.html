@@ -1478,42 +1478,50 @@ document.addEventListener('keydown', function(e) {
 <section id="faq" style="background:#f9f9f9; padding:2.5rem 0 4rem 0;">
   <div class="container">
     <h2>よくあるご質問</h2>
-    <details>
-      <summary>初回来店時の所要時間はどのくらいですか？</summary>
-      <p>カウンセリング込みで約90〜120分程度をみていただいております。</p>
-    </details>
-    <details>
-      <summary>メイクをしたまま来店してもいいですか？</summary>
-      <p>はい、可能です。施術前にクレンジングを行います。</p>
-    </details>
-    <details>
-      <summary>予約の変更・キャンセルはできますか？</summary>
-      <p>LINEでご連絡いただければ、前日までは無料で変更・キャンセル承ります。</p>
-    </details>
-    <details>
-      <summary>どのような支払い方法がありますか？</summary>
-      <p>現金、各種クレジットカード、PayPayをご利用いただけます。</p>
-    </details>
-    <details>
-      <summary>施術後に注意することはありますか？</summary>
-      <p>当日は激しい運動や長時間の入浴は避けて、保湿を心がけてください。</p>
-    </details>
-    <details>
-      <summary>生理中でも施術を受けられますか？</summary>
-      <p>体調に問題なければ可能ですが、お肌が敏感になりやすい時期です。</p>
-    </details>
-    <details>
-      <summary>富山県内各地からアクセスは可能ですか？</summary>
-      <p>はい。高岡市を中心に富山市、射水市、砺波市、小矢部市からもお越しいただいております。駐車場完備で車でのアクセスも便利です。</p>
-    </details>
-    <details>
-      <summary>富山や高岡で美容エステサロンをお探しの方に向けたメッセージはありますか？</summary>
-      <p>Bloomは富山県高岡市で肌質改善とフェイシャルエステを専門とするプライベートサロンです。富山・高岡で本格的な美容エステをご希望の方は、勧誘なし・完全個室の当サロンにお任せください。</p>
-    </details>
-    <details>
-      <summary>駐車場はありますか？高岡駅からのアクセスは？</summary>
-      <p>専用駐車場を完備しております。高岡駅からは車で約10分、あわら町の住宅街に位置するため静かで落ち着いた環境でゆっくりとお過ごしいただけます。</p>
-    </details>
+    <div class="faq-list">
+      <details class="faq-item" data-index="1">
+        <summary>初回来店時の所要時間はどのくらいですか？</summary>
+        <p>カウンセリング込みで約90〜120分程度をみていただいております。</p>
+      </details>
+      <details class="faq-item" data-index="2">
+        <summary>メイクをしたまま来店してもいいですか？</summary>
+        <p>はい、可能です。施術前にクレンジングを行います。</p>
+      </details>
+      <details class="faq-item" data-index="3">
+        <summary>予約の変更・キャンセルはできますか？</summary>
+        <p>LINEでご連絡いただければ、前日までは無料で変更・キャンセル承ります。</p>
+      </details>
+      <details class="faq-item" data-index="4">
+        <summary>どのような支払い方法がありますか？</summary>
+        <p>現金、各種クレジットカード、PayPayをご利用いただけます。</p>
+      </details>
+      <details class="faq-item" data-index="5">
+        <summary>施術後に注意することはありますか？</summary>
+        <p>当日は激しい運動や長時間の入浴は避けて、保湿を心がけてください。</p>
+      </details>
+      <details class="faq-item" data-index="6" style="display: none;">
+        <summary>生理中でも施術を受けられますか？</summary>
+        <p>体調に問題なければ可能ですが、お肌が敏感になりやすい時期です。</p>
+      </details>
+      <details class="faq-item" data-index="7" style="display: none;">
+        <summary>富山県内各地からアクセスは可能ですか？</summary>
+        <p>はい。高岡市を中心に富山市、射水市、砺波市、小矢部市からもお越しいただいております。駐車場完備で車でのアクセスも便利です。</p>
+      </details>
+      <details class="faq-item" data-index="8" style="display: none;">
+        <summary>富山や高岡で美容エステサロンをお探しの方に向けたメッセージはありますか？</summary>
+        <p>Bloomは富山県高岡市で肌質改善とフェイシャルエステを専門とするプライベートサロンです。富山・高岡で本格的な美容エステをご希望の方は、勧誘なし・完全個室の当サロンにお任せください。</p>
+      </details>
+      <details class="faq-item" data-index="9" style="display: none;">
+        <summary>駐車場はありますか？高岡駅からのアクセスは？</summary>
+        <p>専用駐車場を完備しております。高岡駅からは車で約10分、あわら町の住宅街に位置するため静かで落ち着いた環境でゆっくりとお過ごしいただけます。</p>
+      </details>
+    </div>
+    
+    <div class="faq-show-more" style="text-align: center; margin-top: 2rem;">
+      <button onclick="toggleFAQ()" class="faq-show-more-btn" style="background: #2c2c2c; color: white; border: none; padding: 0.8rem 1.5rem; border-radius: 8px; font-size: 0.9rem; cursor: pointer; transition: all 0.3s ease;">
+        <span class="faq-btn-text">もっと見る</span>
+      </button>
+    </div>
   </div>
   
   <style>
@@ -1521,6 +1529,35 @@ document.addEventListener('keydown', function(e) {
     #faq {
       padding: 2rem 0 3rem 0 !important;
     }
+    
+    .faq-item[data-index="6"], 
+    .faq-item[data-index="7"], 
+    .faq-item[data-index="8"], 
+    .faq-item[data-index="9"] {
+      display: none !important;
+    }
+    
+    .faq-item[data-index="6"].show, 
+    .faq-item[data-index="7"].show, 
+    .faq-item[data-index="8"].show, 
+    .faq-item[data-index="9"].show {
+      display: block !important;
+    }
+    
+    .faq-show-more {
+      display: block !important;
+    }
+  }
+  
+  @media (min-width: 769px) {
+    .faq-item {
+      display: block !important;
+    }
+    
+    .faq-show-more {
+      display: none !important;
+    }
+  }
     #access {
       padding: 2.5rem 0 3rem 0 !important;
     }
@@ -1807,6 +1844,25 @@ document.addEventListener('keydown', function(e) {
     } else {
       // 表示する
       hiddenVoices.forEach(voice => voice.classList.add('show'));
+      button.classList.add('expanded');
+      btnText.textContent = '閉じる';
+    }
+  }
+  
+  function toggleFAQ() {
+    const hiddenFAQs = document.querySelectorAll('.faq-item[data-index="6"], .faq-item[data-index="7"], .faq-item[data-index="8"], .faq-item[data-index="9"]');
+    const button = document.querySelector('.faq-show-more-btn');
+    const btnText = button.querySelector('.faq-btn-text');
+    const isExpanded = button.classList.contains('expanded');
+    
+    if (isExpanded) {
+      // 隠す
+      hiddenFAQs.forEach(faq => faq.classList.remove('show'));
+      button.classList.remove('expanded');
+      btnText.textContent = 'もっと見る';
+    } else {
+      // 表示する
+      hiddenFAQs.forEach(faq => faq.classList.add('show'));
       button.classList.add('expanded');
       btnText.textContent = '閉じる';
     }
