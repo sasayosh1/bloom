@@ -1598,77 +1598,128 @@ document.addEventListener('keydown', function(e) {
 </section>
 
 
-<!-- ========== アクセス ========== -->
-<section id="access" class="container" style="padding:3rem 0 4rem 0;">
-  <h2>アクセス</h2>
-  <div class="map">
-    <iframe src="https://maps.google.com/?q=富山県高岡市あわら町15-12&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-  </div>
-  <div style="background: #f9f9f9; padding: 2rem; border-radius: 10px; margin-top: 2rem;">
-    <h3 style="margin-bottom: 1rem; color: #333;">エステティックサロン Bloom／ブルーム</h3>
-    <div style="display: grid; gap: 0.8rem; font-size: 0.95rem; line-height: 1.6;">
-      <p><strong>📍 住所：</strong> 〒933-0911 富山県高岡市あわら町15-12（美容室 STYLE-Bさん隣）</p>
-      <p><strong>🕰️ 営業時間：</strong> 9:00～18:00（時間外応相談可能）</p>
-      <p><strong>📅 定休日：</strong> 不定休（LINE予約時にご確認ください）</p>
-      <p><strong>🚇 アクセス：</strong> JR氷見線 高岡駅より車で約10分</p>
-      <p><strong>🏎️ 駐車場：</strong> 専用駐車場完備（無料）</p>
-      <p><strong>💳 支払方法：</strong> 現金・クレジットカード各種・PayPay対応</p>
-      <p><strong>📱 ご予約＆問い合わせ：</strong> LINE予約専用 @086bqzuj、InstagramのDMよりお待ちしております。</p>
+</main>
+
+<!-- ① アクセス・店舗情報カード（フッター直前に配置） -->
+<section class="contact-card" id="access" style="background: #fff; padding: 3rem 0; border-top: 1px solid #eee;">
+  <div class="container">
+    <h2 style="text-align: center; margin-bottom: 2rem; color: #2c2c2c;">アクセス・店舗情報</h2>
+    <div style="max-width: 800px; margin: 0 auto; background: #f9f9f9; padding: 2rem; border-radius: 12px;">
+      <ul class="contact-list" style="list-style: none; padding: 0; margin: 0; display: grid; gap: 1rem; font-size: 0.95rem; line-height: 1.6;">
+        <li style="display: flex; align-items: flex-start; gap: 0.5rem;">📍 〒933‑0911 富山県高岡市あわら町15‑12（美容室 STYLE‑B さん隣）</li>
+        <li style="display: flex; align-items: flex-start; gap: 0.5rem;">⏰ 営業時間 9:00〜18:00（時間外応相談）</li>
+        <li style="display: flex; align-items: flex-start; gap: 0.5rem;">🚗 JR氷見線 高岡駅より車で約10分 / 専用駐車場あり</li>
+        <li style="display: flex; align-items: flex-start; gap: 0.5rem;">💳 支払方法 現金・カード各種・PayPay対応</li>
+        <li style="display: flex; align-items: flex-start; gap: 0.5rem;">📲 ご予約 LINE予約専用 @086bqzuj / Instagram DM</li>
+      </ul>
+      <div style="text-align: center; margin-top: 2rem;">
+        <a href="https://line.me/R/ti/p/@086bqzuj?oat_content=url&ts=08071045" target="_blank" class="btn-primary" style="background: #00c300; color: #fff; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block; transition: all 0.3s ease;">LINE予約</a>
+      </div>
     </div>
   </div>
 </section>
 
-</main>
-
-<!-- ========== フッター ========== -->
-<footer>
-  <div class="footer-content">
-    <div class="footer-grid">
-      <div class="footer-section">
-        <h3>Bloom Esthetic Salon</h3>
-        <div class="footer-info">
-          <p>〒933-0911<br>富山県高岡市あわら町15-12<br>（美容室 STYLE-Bさん隣）</p>
-          <p>営業時間: 9:00～18:00</p>
-          <p>時間外応相談可能</p>
-          <p>定休日: 不定休</p>
-          <p>駐車場: あり</p>
-          <p>支払: 現金・カード・PAYPAY</p>
-        </div>
-      </div>
-      <div class="footer-section">
-        <h3>メニュー</h3>
-        <ul>
-          <li><a href="#popular">人気メニューBest3</a></li>
-          <li><a href="#concerns">お悩み別メニュー</a></li>
-          <li><a href="#cases">施術事例</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h3>サロン情報</h3>
-        <ul>
-          <li><a href="#reasons">選ばれる理由</a></li>
-          <li><a href="#flow">初回来店の流れ</a></li>
-          <li><a href="#voices">お客様の声</a></li>
-          <li><a href="#faq">よくあるご質問</a></li>
-          <li><a href="#access">アクセス・店舗紹介</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h3>ご予約・お問い合わせ</h3>
-        <ul>
-          <li><a href="https://line.me/R/ti/p/@086bqzuj?oat_content=url&ts=08071045" target="_blank" class="footer-line-btn">LINE予約</a></li>
-        </ul>
-        <p style="font-size: 0.9rem; color: #999; margin-top: 1rem;">24時間いつでもお気軽に<br>ご予約・ご相談ください</p>
-      </div>
+<!-- ② シンプルなフッター -->
+<footer class="site-footer" style="background: #2c2c2c; color: #fff; padding: 3rem 0 2rem;">
+  <div class="container">
+    <div class="footer-info" style="text-align: center; margin-bottom: 2rem;">
+      <p style="margin: 0 0 0.5rem 0; font-size: 0.9rem;">〒933‑0911 富山県高岡市あわら町15‑12</p>
+      <p style="margin: 0 0 1.5rem 0; font-size: 0.9rem;">営業時間 9:00〜18:00（不定休）</p>
+      <a href="https://line.me/R/ti/p/@086bqzuj?oat_content=url&ts=08071045" target="_blank" class="btn-primary" style="background: #00c300; color: #fff; padding: 0.8rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block; transition: all 0.3s ease;">LINE予約</a>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; 2025 Bloom Esthetic Salon. All rights reserved.</p>
-      <p style="font-size: 0.8rem; color: #999; margin-top: 0.5rem;">
-        当サイトではGoogle Analyticsを使用してアクセス解析を行っております。詳しくは
-        <a href="#" onclick="showPrivacyPolicy()" style="color: #ccc; text-decoration: underline;">プライバシーポリシー</a>をご確認ください。
-      </p>
+
+    <nav class="footer-nav" style="text-align: center; margin-bottom: 2rem;">
+      <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; font-size: 0.9rem;">
+        <a href="#popular" style="color: #ccc; text-decoration: none; transition: color 0.3s;">メニュー</a>
+        <a href="#reasons" style="color: #ccc; text-decoration: none; transition: color 0.3s;">選ばれる理由</a>
+        <a href="#voices" style="color: #ccc; text-decoration: none; transition: color 0.3s;">お客様の声</a>
+        <a href="#access" style="color: #ccc; text-decoration: none; transition: color 0.3s;">アクセス</a>
+      </div>
+    </nav>
+
+    <div style="text-align: center; border-top: 1px solid #444; padding-top: 1.5rem;">
+      <small style="font-size: 0.8rem; color: #999;">&copy; 2025 Bloom Esthetic Salon. All rights reserved.</small>
     </div>
   </div>
+  
+  <style>
+  /* ③ 追加／上書き CSS */
+  .contact-card{
+    margin-block:4rem;
+    padding:2rem;
+    background:#fff;
+    border-radius:0.75rem;
+    box-shadow:0 4px 12px rgba(0,0,0,.05);
+  }
+  .contact-card h2{
+    font-size:1.25rem;
+    font-weight:600;
+    margin-block-end:1rem;
+  }
+  .contact-list{
+    margin:0 0 1.5rem 0;
+    padding:0;
+    list-style:none;
+  }
+  .contact-list li{
+    margin-block:0.25rem;
+  }
+  .btn-primary{
+    display:inline-block;
+    background:#07c160;
+    color:#fff;
+    padding:.75rem 1.5rem;
+    border-radius:9999px;
+    text-decoration:none;
+    font-weight:600;
+  }
+  .site-footer{
+    background:#222;
+    color:#fff;
+    padding:3rem 1rem;
+  }
+  .site-footer .footer-info{
+    margin-block-end:2rem;
+  }
+  .site-footer .footer-nav{
+    display:flex;
+    gap:1.5rem;
+    flex-wrap:wrap;
+    margin-block-end:2rem;
+  }
+  .site-footer .footer-nav a{
+    color:#fff;
+    text-decoration:none;
+    font-size:0.875rem;
+  }
+  .site-footer small{
+    font-size:0.75rem;
+    opacity:.8;
+  }
+  /* モバイル調整 */
+  @media(max-width:640px){
+    .contact-card{margin-block:2.5rem;padding:1.5rem}
+    .site-footer{text-align:center}
+    .site-footer .footer-nav{justify-content:center}
+    .btn-primary.sm-hidden{display:none;}
+  }
+  
+  .footer-nav a:hover {
+    color: #fff !important;
+  }
+  
+  .btn-primary:hover {
+    background: #00a000 !important;
+    transform: translateY(-1px);
+  }
+  
+  @media (max-width: 768px) {
+    .footer-nav div {
+      gap: 1rem !important;
+      font-size: 0.85rem !important;
+    }
+  }
+  </style>
 </footer>
 
 
