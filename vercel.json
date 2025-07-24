@@ -1,0 +1,84 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.bloom-estheticsalon.vercel.app"
+        }
+      ],
+      "destination": "https://bloom-estheticsalon.vercel.app/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "bloom-git-main-sasayoshis-projects.vercel.app"
+        }
+      ],
+      "destination": "https://bloom-estheticsalon.vercel.app/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "bloom-sasayoshis-projects.vercel.app" 
+        }
+      ],
+      "destination": "https://bloom-estheticsalon.vercel.app/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "bloom-*.vercel.app"
+        }
+      ],
+      "destination": "https://bloom-estheticsalon.vercel.app/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "destination": "/index.html",
+      "permanent": false
+    },
+    {
+      "source": "/:path((?!assets|google).)*",
+      "missing": [
+        {
+          "type": "header",
+          "key": "x-forwarded-proto",
+          "value": "https"
+        }
+      ],
+      "destination": "https://bloom-estheticsalon.vercel.app/:path*",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    }
+  ]
+}
