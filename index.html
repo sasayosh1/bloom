@@ -519,8 +519,15 @@
       }
     }
 
+    /* PC表示: ハンバーガーメニューを隠す */
+    @media (min-width: 769px) {
+      .hamburger { display: none !important; }
+      .nav-menu { display: flex !important; }
+      .nav-menu.active { display: flex !important; }
+    }
+
     @media (max-width: 768px) {
-      .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 1rem 0; }
+      .nav-menu { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 1rem 0; z-index: 1001; }
       .nav-menu.active { display: flex; }
       .hamburger { display: flex; }
       
@@ -1845,9 +1852,20 @@ document.addEventListener('keydown', function(e) {
   
   /* ハンバーガーメニュー */
   function toggleMenu() {
-    const menu = document.querySelector('.nav-menu');
-    menu.classList.toggle('active');
+    // モバイルサイズでのみ動作
+    if (window.innerWidth <= 768) {
+      const menu = document.querySelector('.nav-menu');
+      menu.classList.toggle('active');
+    }
   }
+  
+  // ウィンドウサイズ変更時にモバイルメニューをリセット
+  window.addEventListener('resize', function() {
+    if (window.innerWidth > 768) {
+      const menu = document.querySelector('.nav-menu');
+      menu.classList.remove('active');
+    }
+  });
   
   /* プライバシーポリシーモーダル */
   function showPrivacyPolicy() {
