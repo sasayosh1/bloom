@@ -61,6 +61,9 @@
       send_page_view: true,
       // デバッグモード（本番では false に設定）
       debug_mode: false,
+      // URL正規化設定
+      page_location: 'https://bloom-estheticsalon.vercel.app/',
+      page_title: 'Bloom Esthetic Salon - 富山県高岡市のエステサロン',
       // カスタムパラメータ
       custom_map: {
         'custom_parameter_1': 'salon_location',
@@ -72,6 +75,12 @@
       gtag('config', GA4_MEASUREMENT_ID, {
         salon_location: '高岡市',
         business_type: 'エステサロン'
+      });
+      
+      // リダイレクト後のページビュー送信
+      gtag('event', 'page_view', {
+        page_location: 'https://bloom-estheticsalon.vercel.app/',
+        page_title: 'Bloom Esthetic Salon - 富山県高岡市のエステサロン'
       });
     } else {
       console.log('GA4測定IDが設定されていません。実際のIDを入力してください。');
