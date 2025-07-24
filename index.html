@@ -1085,6 +1085,7 @@
     border: 1px solid #e0e0e0;
     overflow: hidden;
     transition: all 0.3s ease;
+    position: relative;
   }
   
   .flow-toggle details:hover {
@@ -1107,11 +1108,29 @@
     align-items: center;
     gap: 1rem;
     user-select: none;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+  
+  .flow-toggle summary::after {
+    content: '▼';
+    margin-left: auto;
+    font-size: 0.8rem;
+    color: #666;
+    transition: transform 0.3s ease;
+  }
+  
+  .flow-toggle details[open] summary::after {
+    transform: rotate(180deg);
   }
   
   .flow-toggle summary:hover {
     background: #f0f0f0;
+    transform: translateY(-1px);
+  }
+  
+  .flow-toggle summary:active {
+    transform: translateY(0);
   }
   
   .flow-toggle details[open] summary {
