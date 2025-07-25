@@ -454,7 +454,7 @@
       display:grid; 
       gap:1.5rem; 
       grid-template-columns: 1fr 1fr; 
-      grid-template-rows: 1fr 1fr;
+      grid-template-rows: auto auto;
       max-width: 800px; 
       margin: 0 auto; 
     }
@@ -548,7 +548,7 @@
       /* Before/After タブレット調整 */
       #cases .case-grid{ 
         grid-template-columns: 1fr 1fr !important;
-        grid-template-rows: 1fr 1fr !important;
+        grid-template-rows: auto auto !important;
         gap: 1.2rem !important;
         max-width: 600px !important;
       }
@@ -1632,7 +1632,7 @@ document.addEventListener('keydown', function(e) {
     }
     #cases .case-grid{ 
       grid-template-columns: 1fr 1fr !important;
-      grid-template-rows: 1fr 1fr !important;
+      grid-template-rows: auto auto !important;
       gap: 1.2rem !important;
       max-width: 350px !important;
     }
