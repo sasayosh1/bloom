@@ -461,11 +461,10 @@
     .case{ position:relative; }
     .case img{ 
       width: 100%; 
-      height: 180px; 
+      height: 120px; 
       object-fit: cover; 
       border-radius: 8px; 
       transition: transform 0.3s ease;
-      aspect-ratio: 16/9;
     }
     .case:hover img{ 
       transform: scale(1.05); 
@@ -554,8 +553,7 @@
         max-width: 600px !important;
       }
       .case img{ 
-        height: 140px !important; 
-        aspect-ratio: 16/9 !important;
+        height: 100px !important; 
       }
       
       /* お悩み別メニュー タブレット調整 */
@@ -1630,8 +1628,7 @@ document.addEventListener('keydown', function(e) {
     }
     /* Before/After画像高さモバイル調整 */
     .case img{ 
-      height: 120px !important; 
-      aspect-ratio: 16/9 !important;
+      height: 80px !important; 
     }
     #cases .case-grid{ 
       grid-template-columns: 1fr 1fr !important;
