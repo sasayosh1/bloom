@@ -454,6 +454,7 @@
       display:grid; 
       gap:1.5rem; 
       grid-template-columns: 1fr 1fr; 
+      grid-template-rows: 1fr 1fr;
       max-width: 800px; 
       margin: 0 auto; 
     }
@@ -547,6 +548,7 @@
       /* Before/After タブレット調整 */
       #cases .case-grid{ 
         grid-template-columns: 1fr 1fr !important;
+        grid-template-rows: 1fr 1fr !important;
         gap: 1.2rem !important;
         max-width: 600px !important;
       }
@@ -1629,9 +1631,10 @@ document.addEventListener('keydown', function(e) {
       height: 180px !important; 
     }
     #cases .case-grid{ 
-      grid-template-columns: 1fr !important;
-      gap: 1.5rem !important;
-      max-width: 400px !important;
+      grid-template-columns: 1fr 1fr !important;
+      grid-template-rows: 1fr 1fr !important;
+      gap: 1.2rem !important;
+      max-width: 350px !important;
     }
     
     /* お悩み別メニュー モバイル調整 */
